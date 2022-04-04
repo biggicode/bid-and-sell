@@ -1,5 +1,9 @@
 const colors = {
-  light: "#ddd",
+  light: "#EDDF12",
+  danger: "#6AED12",
+  warning: "#EDDF12",
+  primary: "#4D13ED",
+  dark: "#090909",
 }
 
 const breakpoints = {
