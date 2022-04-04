@@ -1,5 +1,12 @@
+import Header from "../header"
+
 const App = () => {
-  return <div>This is app</div>
+  return (
+    <div>
+      <Header />
+      This is app
+    </div>
+  )
 }
 
 export default App
