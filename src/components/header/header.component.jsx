@@ -1,5 +1,7 @@
+import * as S from "./header.style"
+
 const Header = () => {
-  return <header>This is header</header>
+  return <S.Header>This is header</S.Header>
 }
 
 export default Header
