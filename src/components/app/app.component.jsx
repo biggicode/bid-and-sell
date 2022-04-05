@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components"
 import theme from "../theme"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Header from "../header"
 import Home from "../home"
@@ -9,8 +10,14 @@ import Sell from "../sell"
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      This is app
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auctions" element={<Auctions />} />
+          <Route path="/sell" element={<Sell />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
