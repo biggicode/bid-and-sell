@@ -8,7 +8,8 @@ export const Nav = styled.nav`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
     position: fixed;
-    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+    transform: ${({ openNav }) =>
+      openNav ? "translateX(0)" : "translateX(100%)"};
     top: 0;
     right: 0;
     height: 100vh;

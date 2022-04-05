@@ -1,20 +1,13 @@
 import { useState } from "react"
 import * as S from "./burger.syle"
 
-import Nav from "../nav"
-
-const Burger = () => {
-  const [open, setOpen] = useState(false)
-
+const Burger = ({ openNav, handleBurgerClick }) => {
   return (
-    <>
-      <S.Burger open={open} onClick={() => setOpen(!open)}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </S.Burger>
-      <Nav open={open} />
-    </>
+    <S.Burger openNav={openNav} onClick={handleBurgerClick}>
+      <div></div>
+      <div></div>
+      <div></div>
+    </S.Burger>
   )
 }
 
