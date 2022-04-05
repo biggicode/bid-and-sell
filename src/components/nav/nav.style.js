@@ -6,15 +6,16 @@ export const Nav = styled.nav`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: none;
     flex-direction: column;
     position: fixed;
+    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
     height: 100vh;
     width: 300px;
     padding-top: 3.5rem;
     background-color: ${({ theme }) => theme.colors.dark};
+    transition: transform 250ms ease-in-out;
   }
 `
 

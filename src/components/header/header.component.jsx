@@ -1,6 +1,5 @@
 import * as S from "./header.style"
 import Logo from "../logo"
-import Nav from "../nav"
 import Burger from "../burger"
 
 const Header = () => {
@@ -8,7 +7,6 @@ const Header = () => {
     <S.Header>
       <Logo />
       <Burger />
-      <Nav />
     </S.Header>
   )
 }
