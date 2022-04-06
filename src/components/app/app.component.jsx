@@ -7,6 +7,7 @@ import Home from "../home"
 import Auctions from "../auctions"
 import Sell from "../sell"
 import Register from "../register"
+import Login from "../login"
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/auctions" element={<Auctions />} />
           <Route path="/sell" element={<Sell />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
