@@ -12,6 +12,9 @@ const Nav = ({ openNav, handleNavLinkClick }) => {
       <S.Link to="/sell" onClick={handleNavLinkClick}>
         Sell
       </S.Link>
+      <S.Link to="/register" onClick={handleNavLinkClick}>
+        Register
+      </S.Link>
     </S.Nav>
   )
 }

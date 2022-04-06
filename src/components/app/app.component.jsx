@@ -6,6 +6,7 @@ import Header from "../header"
 import Home from "../home"
 import Auctions from "../auctions"
 import Sell from "../sell"
+import Register from "../register"
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/auctions" element={<Auctions />} />
           <Route path="/sell" element={<Sell />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
