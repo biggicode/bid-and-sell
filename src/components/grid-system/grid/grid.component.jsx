@@ -1,7 +1,7 @@
 import * as S from "./grid.style"
 
-const Grid = ({ props }) => {
-  return <S.Grid>{console.log(props)}</S.Grid>
+const Grid = ({ children }) => {
+  return <S.Grid>{children}</S.Grid>
 }
 
 export default Grid
