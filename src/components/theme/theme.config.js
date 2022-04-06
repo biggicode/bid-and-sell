@@ -3,6 +3,7 @@ const colors = {
   danger: "#6AED12",
   warning: "#EDDF12",
   primary: "#4D13ED",
+  primaryDarker: "#3D0FBE",
   dark: "#090909",
 }
 

@@ -15,7 +15,7 @@ export const Nav = styled.nav`
     height: 100vh;
     width: 300px;
     padding-top: 3.5rem;
-    background-color: ${({ theme }) => theme.colors.dark};
+    background-color: ${({ theme }) => theme.colors.primaryDarker};
     transition: transform 250ms ease-in-out;
   }
 `
