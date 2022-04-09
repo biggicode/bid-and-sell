@@ -8,19 +8,22 @@ import Auctions from "../auctions"
 import Sell from "../sell"
 import Register from "../register"
 import Login from "../login"
+import Grid from "../grid-system/grid"
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auctions" element={<Auctions />} />
-          <Route path="/sell" element={<Sell />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <Grid>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/auctions" element={<Auctions />} />
+            <Route path="/sell" element={<Sell />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Grid>
       </BrowserRouter>
     </ThemeProvider>
   )
