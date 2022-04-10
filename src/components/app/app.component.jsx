@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components"
 import theme from "../theme"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Provider } from "react-redux"
-import store from "../../redux"
+import store from "../../redux/store"
 
 import Header from "../header"
 import Home from "../home"
