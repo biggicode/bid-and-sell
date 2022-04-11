@@ -23,7 +23,7 @@ export const Input = styled.input`
   padding: 0.5rem;
 `
 
-export const Submit = styled.input`
+export const Submit = styled.button`
   margin: 1.5rem 0;
   padding: 0.5rem 1rem;
   border-radius: 6px;
