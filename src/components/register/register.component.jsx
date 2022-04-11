@@ -14,7 +14,10 @@ const Register = () => {
   const { displayName, email, password, passwordConfrim } = state
 
   const handleSubmit = () => {}
-  const handleChange = () => {}
+  const handleChange = (e) => {
+    let { name, value } = e.target
+    setState({ ...state, [name]: value })
+  }
 
   return (
     <S.Form onSubmit={handleSubmit}>
