@@ -1,29 +1,31 @@
 import * as constant from "./user.constant"
 
 const initialState = {
-  isLoggedIn: false,
-  userData: null,
+  loading: false,
+  currentUser: null,
+  error: null,
 }
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case constant.LOGIN:
+    case constant.REGISTER_START:
       return {
         ...state,
-        isLoggedIn: true,
+        loading: true,
       }
 
-    case constant.LOGOUT:
+    case constant.REGISTER_SUCCES:
       return {
         ...state,
-        isLoggedIn: false,
+        loading: false,
+        currentUser: action.payload,
       }
 
-    case constant.SETUSER:
+    case constant.REGISTER_FAIL:
       return {
         ...state,
-        isLoggedIn: !!action.userData,
-        userData: action.userData,
+        loading: false,
+        error: action.payload,
       }
 
     default:
