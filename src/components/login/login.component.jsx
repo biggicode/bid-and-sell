@@ -1,7 +1,55 @@
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory, Link } from "react-router-dom"
 import * as S from "./login.style"
 
 const Login = () => {
-  return <div>This is Login</div>
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  })
+
+  const { email, password } = state
+
+  const handleSubmit = () => {}
+  const handleGoogleSignIn = () => {}
+  const handleFBSignIn = () => {}
+  const handleChange = () => {}
+
+  return (
+    <S.Form onSubmit={handleSubmit}>
+      <h2>Log In!</h2>
+      <S.Button type="button" onClick={handleGoogleSignIn}>
+        <i className="icon__google" />
+        Sign In with Google
+      </S.Button>
+      <S.Button type="button" onClick={handleFBSignIn}>
+        <i className="icon__google" />
+        Sign In with FaceBook
+      </S.Button>
+      <p>OR</p>
+      <S.Label>Email</S.Label>
+      <S.Input
+        type="email"
+        name="email"
+        onChange={handleChange}
+        value={email}
+        required
+      />
+      <S.Label>Password</S.Label>
+      <S.Input
+        type="password"
+        name="password"
+        onChange={handleChange}
+        value={password}
+        required
+      />
+      <S.Submit type="submit">Log In</S.Submit>
+      <hr />
+      <p>Don't have an account</p>
+      <Link to="/register">Create new account</Link>
+    </S.Form>
+  )
 }
 
 export default Login
