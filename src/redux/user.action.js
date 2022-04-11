@@ -1,6 +1,10 @@
 import * as constant from "./user.constant"
 // import { auth } from "../config/firebase"
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth"
 import { auth } from "../config/firebase"
 
 const registerStart = () => ({
@@ -29,5 +33,33 @@ export const registerInitiate = (email, password, displayName) => {
       })
       .then()
       .catch((error) => dispatch(registerFail(error.message)))
+  }
+}
+
+//LOG IN
+
+const loginStart = () => ({
+  type: constant.LOGIN_START,
+})
+
+const loginSucces = (user) => ({
+  type: constant.LOGIN_SUCCES,
+  payload: user,
+})
+
+const loginFail = (error) => ({
+  type: constant.LOGIN_FAIL,
+  payload: error,
+})
+
+export const loginInitiate = (email, password) => {
+  return function (dispatch) {
+    dispatch(loginStart())
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(loginSucces(user))
+      })
+      .catch((error) => dispatch(loginFail(error.message)))
   }
 }
