@@ -1,4 +1,6 @@
 import * as constant from "./user.constant"
+// import { auth } from "../config/firebase"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { auth } from "../config/firebase"
 
 const registerStart = () => ({
@@ -19,13 +21,13 @@ export const registerInitiate = (email, password, displayName) => {
   return function (dispatch) {
     dispatch(registerStart())
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        user.updateProfile({ displayName: displayName })
-
-        dispatch(registerSucces(user))
+        return updateProfile(user, { displayName: displayName }).then(() =>
+          dispatch(registerSucces(user))
+        )
       })
+      .then()
       .catch((error) => dispatch(registerFail(error.message)))
   }
 }

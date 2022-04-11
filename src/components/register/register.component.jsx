@@ -32,7 +32,7 @@ const Register = () => {
     }
 
     dispatch(registerInitiate(email, password, displayName))
-    setState({ email: "", displayName: "", password: "", passwordConfrim: "" })
+    setState({ email: "", displayName: "", password: "", passwordConfirm: "" })
   }
 
   const handleChange = (e) => {
