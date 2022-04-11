@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+import { registerInitiate } from "../../redux/user.action"
 import * as S from "./register.style"
 
 const Register = () => {
@@ -8,12 +9,32 @@ const Register = () => {
     displayName: "",
     email: "",
     password: "",
-    passwordConfrim: "",
+    passwordConfirm: "",
   })
+  const { currentUser } = useSelector((state) => state.user)
 
-  const { displayName, email, password, passwordConfrim } = state
+  const navigate = useNavigate()
 
-  const handleSubmit = () => {}
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/")
+    }
+  }, [currentUser])
+
+  const dispatch = useDispatch()
+
+  const { displayName, email, password, passwordConfirm } = state
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (password !== passwordConfirm) {
+      return
+    }
+
+    dispatch(registerInitiate(email, password, displayName))
+    setState({ email: "", displayName: "", password: "", passwordConfrim: "" })
+  }
+
   const handleChange = (e) => {
     let { name, value } = e.target
     setState({ ...state, [name]: value })
@@ -49,9 +70,9 @@ const Register = () => {
       <S.Label>Password Confirmation</S.Label>
       <S.Input
         type="password"
-        name="confirmPassword"
-        onChane={handleChange}
-        value={passwordConfrim}
+        name="passwordConfirm"
+        onChange={handleChange}
+        value={passwordConfirm}
         required
       />
       <S.Submit type="submit">Register!</S.Submit>
