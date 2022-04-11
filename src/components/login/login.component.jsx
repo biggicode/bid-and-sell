@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+
 import * as S from "./login.style"
+import { loginInitiate } from "../../redux/user.action"
 
 const Login = () => {
   const [state, setState] = useState({
@@ -11,10 +13,34 @@ const Login = () => {
 
   const { email, password } = state
 
-  const handleSubmit = () => {}
+  const { currentUser } = useSelector((state) => state.user)
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/")
+    }
+  }, [currentUser])
+
   const handleGoogleSignIn = () => {}
   const handleFBSignIn = () => {}
-  const handleChange = () => {}
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (!email || !password) {
+      return
+    }
+    dispatch(loginInitiate(email, password))
+    setState({ email: "", password: "" })
+  }
+
+  const handleChange = (e) => {
+    let { name, value } = e.target
+    setState({ ...state, [name]: value })
+  }
 
   return (
     <S.Form onSubmit={handleSubmit}>
