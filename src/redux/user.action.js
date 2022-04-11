@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from "firebase/auth"
 import { auth } from "../config/firebase"
 
@@ -61,5 +62,30 @@ export const loginInitiate = (email, password) => {
         dispatch(loginSucces(user))
       })
       .catch((error) => dispatch(loginFail(error.message)))
+  }
+}
+
+//LOG OUT
+
+const logoutStart = () => ({
+  type: constant.LOGOUT_START,
+})
+
+const logoutSucces = () => ({
+  type: constant.LOGOUT_SUCCES,
+})
+
+const logoutFail = (error) => ({
+  type: constant.LOGOUT_FAIL,
+  payload: error,
+})
+
+export const logoutInitiate = () => {
+  return function (dispatch) {
+    dispatch(logoutStart())
+
+    signOut()
+      .then((resp) => dispatch(logoutSucces()))
+      .catch((error) => dispatch(logoutFail(error.message)))
   }
 }

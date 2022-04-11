@@ -9,10 +9,17 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case constant.LOGIN_START:
+    case constant.LOGOUT_START:
     case constant.REGISTER_START:
       return {
         ...state,
         loading: true,
+      }
+    case constant.LOGOUT_SUCCES:
+      return {
+        ...state,
+        currentUser: null,
+        loading: false,
       }
     case constant.LOGIN_SUCCES:
     case constant.REGISTER_SUCCES:
@@ -22,6 +29,7 @@ export const userReducer = (state = initialState, action) => {
         currentUser: action.payload,
       }
     case constant.LOGIN_FAIL:
+    case constant.LOGOUT_FAIL:
     case constant.REGISTER_FAIL:
       return {
         ...state,
