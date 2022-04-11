@@ -17,7 +17,7 @@ const Register = () => {
       <S.Input type="password" />
       <S.Submit
         type="submit"
-        text="Register!"
+        value="Register!"
         ref={passwordConfirmRef}
         required
       />
