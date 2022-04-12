@@ -15,6 +15,12 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       }
+    case constant.SET_USER:
+      return {
+        ...state,
+        loading: false,
+        currentUser: action.payload,
+      }
     case constant.LOGOUT_SUCCES:
       return {
         ...state,

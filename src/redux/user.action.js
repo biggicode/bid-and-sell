@@ -89,3 +89,6 @@ export const logoutInitiate = () => {
       .catch((error) => dispatch(logoutFail(error.message)))
   }
 }
+
+//Action to persist user after auth
+export const setUser = (user) => ({ type: constant.SET_USER, payload: user })
