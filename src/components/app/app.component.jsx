@@ -1,8 +1,9 @@
+import { useEffect } from "react"
 import { ThemeProvider } from "styled-components"
 import theme from "../theme"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { Provider } from "react-redux"
-import store from "../../redux/store"
+import { useDispatch } from "react-redux"
+import { auth } from "../../config/firebase"
 
 import Header from "../header"
 import Home from "../home"
@@ -11,24 +12,35 @@ import Sell from "../sell"
 import Register from "../register"
 import Login from "../login"
 import Grid from "../grid-system/grid"
+import { setUser } from "../../redux/user.action"
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUser(user))
+      } else {
+        dispatch(setUser(null))
+      }
+    })
+  }, [dispatch])
+
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Header />
-          <Grid>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/auctions" element={<Auctions />} />
-              <Route path="/sell" element={<Sell />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </Grid>
-        </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        <Header />
+        <Grid>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/auctions" element={<Auctions />} />
+            <Route path="/sell" element={<Sell />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Grid>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
