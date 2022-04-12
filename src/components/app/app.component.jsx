@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components"
 import theme from "../theme"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import store from "../../redux/store"
+import { auth } from "../../config/firebase"
 
 import Header from "../header"
 import Home from "../home"
@@ -12,9 +12,20 @@ import Sell from "../sell"
 import Register from "../register"
 import Login from "../login"
 import Grid from "../grid-system/grid"
+import { setUser } from "../../redux/user.action"
 
 const App = () => {
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUser(user))
+      } else {
+        dispatch(setUser(null))
+      }
+    })
+  }, [dispatch])
 
   return (
     <ThemeProvider theme={theme}>
