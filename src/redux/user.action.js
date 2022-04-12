@@ -5,8 +5,9 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  signInWithPopup,
 } from "firebase/auth"
-import { auth } from "../config/firebase"
+import { auth, googleAuthProvider } from "../config/firebase"
 
 const registerStart = () => ({
   type: constant.REGISTER_START,
@@ -105,6 +106,18 @@ const googleLoginFail = (error) => ({
   type: constant.GOOGLE_LOGIN_FAIL,
   payload: error,
 })
+
+export const googleLogInInitiate = () => {
+  return function (dispatch) {
+    dispatch(googleLogInInitiate())
+
+    signInWithPopup(auth, googleAuthProvider).then((result) => {
+      dispatch(googleLoginSucces(result)).catch((error) =>
+        dispatch(googleLoginFail)
+      )
+    })
+  }
+}
 
 //Action to persist user after auth
 export const setUser = (user) => ({ type: constant.SET_USER, payload: user })
