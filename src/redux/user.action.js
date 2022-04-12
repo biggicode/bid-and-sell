@@ -7,7 +7,11 @@ import {
   signOut,
   signInWithPopup,
 } from "firebase/auth"
-import { auth, googleAuthProvider } from "../config/firebase"
+import {
+  auth,
+  googleAuthProvider,
+  facebookAuthProvider,
+} from "../config/firebase"
 
 const registerStart = () => ({
   type: constant.REGISTER_START,
@@ -117,6 +121,34 @@ export const googleLogInInitiate = () => {
         dispatch(googleLoginSucces(user))
       })
       .catch((error) => dispatch(googleLoginFail(error.message)))
+  }
+}
+
+//Facebook LOG IN
+
+const facebookLoginStart = () => ({
+  type: constant.FACEBOOK_LOGIN_START,
+})
+
+const facebookLoginSucces = (user) => ({
+  type: constant.FACEBOOK_LOGIN_SUCCES,
+  payload: user,
+})
+
+const facebookLoginFail = (error) => ({
+  type: constant.FACEBOOK_LOGIN_FAIL,
+  payload: error,
+})
+
+export const facebookLogInInitiate = () => {
+  return function (dispatch) {
+    dispatch(facebookLoginStart())
+
+    signInWithPopup(auth, facebookAuthProvider.addScope("user_birthday, email"))
+      .then(({ user }) => {
+        dispatch(facebookLoginSucces(user))
+      })
+      .catch((error) => dispatch(facebookLoginFail(error.message)))
   }
 }
 
