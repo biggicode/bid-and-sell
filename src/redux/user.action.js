@@ -5,8 +5,13 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  signInWithPopup,
 } from "firebase/auth"
-import { auth } from "../config/firebase"
+import {
+  auth,
+  googleAuthProvider,
+  facebookAuthProvider,
+} from "../config/firebase"
 
 const registerStart = () => ({
   type: constant.REGISTER_START,
@@ -87,6 +92,63 @@ export const logoutInitiate = () => {
     signOut(auth)
       .then((resp) => dispatch(logoutSucces()))
       .catch((error) => dispatch(logoutFail(error.message)))
+  }
+}
+
+//GOOGLE LOG IN
+
+const googleLoginStart = () => ({
+  type: constant.GOOGLE_LOGIN_START,
+})
+
+const googleLoginSucces = (user) => ({
+  type: constant.GOOGLE_LOGIN_SUCCES,
+  payload: user,
+})
+
+const googleLoginFail = (error) => ({
+  type: constant.GOOGLE_LOGIN_FAIL,
+  payload: error,
+})
+
+export const googleLogInInitiate = () => {
+  return function (dispatch) {
+    dispatch(googleLoginStart())
+
+    signInWithPopup(auth, googleAuthProvider)
+      .then(({ user }) => {
+        console.log(user)
+        dispatch(googleLoginSucces(user))
+      })
+      .catch((error) => dispatch(googleLoginFail(error.message)))
+  }
+}
+
+//Facebook LOG IN
+
+const facebookLoginStart = () => ({
+  type: constant.FACEBOOK_LOGIN_START,
+})
+
+const facebookLoginSucces = (user) => ({
+  type: constant.FACEBOOK_LOGIN_SUCCES,
+  payload: user,
+})
+
+const facebookLoginFail = (error) => ({
+  type: constant.FACEBOOK_LOGIN_FAIL,
+  payload: error,
+})
+
+export const facebookLogInInitiate = () => {
+  return function (dispatch) {
+    dispatch(facebookLoginStart())
+
+    signInWithPopup(auth, facebookAuthProvider.addScope("user_birthday, email"))
+      .then(({ user }) => {
+        dispatch(facebookLoginSucces(user))
+      })
+      .catch((error) => dispatch(facebookLoginFail(error.message)))
   }
 }
 

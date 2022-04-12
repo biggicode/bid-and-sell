@@ -11,6 +11,8 @@ export const userReducer = (state = initialState, action) => {
     case constant.LOGIN_START:
     case constant.LOGOUT_START:
     case constant.REGISTER_START:
+    case constant.GOOGLE_LOGIN_START:
+    case constant.FACEBOOK_LOGIN_START:
       return {
         ...state,
         loading: true,
@@ -29,6 +31,8 @@ export const userReducer = (state = initialState, action) => {
       }
     case constant.LOGIN_SUCCES:
     case constant.REGISTER_SUCCES:
+    case constant.GOOGLE_LOGIN_SUCCES:
+    case constant.FACEBOOK_LOGIN_SUCCES:
       return {
         ...state,
         loading: false,
@@ -37,6 +41,8 @@ export const userReducer = (state = initialState, action) => {
     case constant.LOGIN_FAIL:
     case constant.LOGOUT_FAIL:
     case constant.REGISTER_FAIL:
+    case constant.GOOGLE_LOGIN_FAIL:
+    case constant.FACEBOOK_LOGIN_FAIL:
       return {
         ...state,
         loading: false,
