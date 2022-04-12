@@ -90,5 +90,21 @@ export const logoutInitiate = () => {
   }
 }
 
+//GOOGLE LOG IN
+
+const googleLoginStart = () => ({
+  type: constant.GOOGLE_LOGIN_START,
+})
+
+const googleLoginSucces = (user) => ({
+  type: constant.GOOGLE_LOGIN_SUCCES,
+  payload: user,
+})
+
+const googleLoginFail = (error) => ({
+  type: constant.GOOGLE_LOGIN_FAIL,
+  payload: error,
+})
+
 //Action to persist user after auth
 export const setUser = (user) => ({ type: constant.SET_USER, payload: user })
