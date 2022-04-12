@@ -109,13 +109,14 @@ const googleLoginFail = (error) => ({
 
 export const googleLogInInitiate = () => {
   return function (dispatch) {
-    dispatch(googleLogInInitiate())
+    dispatch(googleLoginStart())
 
-    signInWithPopup(auth, googleAuthProvider).then((result) => {
-      dispatch(googleLoginSucces(result)).catch((error) =>
-        dispatch(googleLoginFail)
-      )
-    })
+    signInWithPopup(auth, googleAuthProvider)
+      .then(({ user }) => {
+        console.log(user)
+        dispatch(googleLoginSucces(user))
+      })
+      .catch((error) => dispatch(googleLoginFail(error.message)))
   }
 }
 

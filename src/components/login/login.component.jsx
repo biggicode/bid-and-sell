@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, Link } from "react-router-dom"
 
 import * as S from "./login.style"
-import { loginInitiate } from "../../redux/user.action"
+import { googleLogInInitiate, loginInitiate } from "../../redux/user.action"
 
 const Login = () => {
   const [state, setState] = useState({
@@ -24,7 +24,9 @@ const Login = () => {
     }
   }, [currentUser])
 
-  const handleGoogleSignIn = () => {}
+  const handleGoogleSignIn = () => {
+    dispatch(googleLogInInitiate())
+  }
   const handleFBSignIn = () => {}
 
   const handleSubmit = (e) => {
