@@ -1,5 +1,7 @@
 import { useState } from "react"
+import { db } from "../../config/firebase"
 import * as S from "./sell.style"
+import { collection, addDoc } from "firebase/firestore"
 
 const initialValues = {
   auctionTitle: "",
@@ -30,8 +32,16 @@ const Sell = () => {
     setState({ ...state, [name]: value })
   }
 
-  const handleSubmit = (e) => {
+  const resetForm = () => {
+    setState(initialValues)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    await addDoc(collection(db, "auctions"), state)
+
+    resetForm()
   }
 
   return (
@@ -46,6 +56,7 @@ const Sell = () => {
         id="auctionTitle"
         value={auctionTitle}
         onChange={handleInputChange}
+        required
       />
       <S.Label>Image</S.Label>
       <S.Input type="file" />
@@ -56,6 +67,7 @@ const Sell = () => {
         id="description"
         value={description}
         onChange={handleInputChange}
+        required
       ></S.TextArea>
       <S.Label htmlFor="startingPrice">Starting Price</S.Label>
       <S.Input
@@ -64,6 +76,7 @@ const Sell = () => {
         id="startingPrice"
         value={startingPrice}
         onChange={handleInputChange}
+        required
       />
       <S.Separator />
       <S.SemiTitle>Contact info</S.SemiTitle>
@@ -74,6 +87,7 @@ const Sell = () => {
         id="creatorName"
         value={creatorName}
         onChange={handleInputChange}
+        required
       />
       <S.Label htmlFor="creatorEmail">E-mail address</S.Label>
       <S.Input
@@ -82,6 +96,7 @@ const Sell = () => {
         id="creatorEmail"
         value={creatorEmail}
         onChange={handleInputChange}
+        required
       />
       <S.Label htmlFor="phoneNumber">Phone number</S.Label>
       <S.Input
@@ -90,6 +105,7 @@ const Sell = () => {
         id="phoneNumber"
         value={phoneNumber}
         onChange={handleInputChange}
+        required
       />
       <S.Separator />
       <S.Button type="submit">Create auction!</S.Button>
