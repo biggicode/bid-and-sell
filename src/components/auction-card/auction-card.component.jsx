@@ -7,6 +7,7 @@ const AuctionCard = () => {
       <S.CardHeader>23:10</S.CardHeader>
       <S.CardBody>
         <S.CardImg src={car} />
+        <S.AuctionTitle>I sell a brand new audi</S.AuctionTitle>
         <S.PriceSection>
           <S.Price>
             <p>Starting Price</p>

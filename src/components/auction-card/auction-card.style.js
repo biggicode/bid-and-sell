@@ -16,10 +16,16 @@ export const CardHeader = styled.div`
 
 export const CardBody = styled.div`
   padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `
 
 export const CardImg = styled.img`
-  max-width: 100%;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
 `
 
 export const PriceSection = styled.div`
@@ -33,5 +39,9 @@ export const Price = styled.div`
 
 export const ButtonSection = styled.div`
   padding: 0.5rem 1rem;
+  text-align: center;
+`
+
+export const AuctionTitle = styled.p`
   text-align: center;
 `
