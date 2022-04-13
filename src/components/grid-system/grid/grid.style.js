@@ -6,6 +6,8 @@ export const Grid = styled.div`
   grid-gap: 10px;
   padding: 1rem 2rem 1rem;
 
+  ${({ fullHeight }) => fullHeight && `min-height: 100vh;`}
+
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 1rem;
