@@ -31,7 +31,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
-        <Grid>
+        <Grid fullHeight={true} addPadding={true}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auctions" element={<Auctions />} />
