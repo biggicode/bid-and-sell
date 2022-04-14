@@ -12,6 +12,7 @@ import Sell from "../sell"
 import Register from "../register"
 import Login from "../login"
 import Grid from "../grid-system/grid"
+import Footer from "../footer"
 import { setUser } from "../../redux/user.action"
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
           </Routes>
         </Grid>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   )
