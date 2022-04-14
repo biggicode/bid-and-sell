@@ -5,7 +5,6 @@ export const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-column: 1/-1;
   height: 4rem;
 `
 
