@@ -2,7 +2,8 @@ import { useState } from "react"
 import { db, storage } from "../../config/firebase"
 import * as S from "./sell.style"
 import { collection, addDoc } from "firebase/firestore"
-import { ref } from "firebase/storage"
+import { ref, uploadBytes } from "firebase/storage"
+import { v4 } from "uuid"
 
 const initialValues = {
   auctionTitle: "",
@@ -41,11 +42,7 @@ const Sell = () => {
     setImageUpload(e.target.files[0])
   }
 
-  const uploadImage = () => {
-    if (imageUpload == null) return
-
-    const imageRef = ref(storage, `images/${imageUpload.name + 1}`)
-  }
+  const uploadImage = () => {}
 
   const resetForm = () => {
     setState(initialValues)
@@ -53,6 +50,13 @@ const Sell = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (imageUpload == null) return
+
+    const imagePath = `${imageUpload.name + v4()}`
+
+    const imageRef = ref(storage, `images/${imagePath}`)
+    await uploadBytes(imageRef, imageUpload)
 
     await addDoc(collection(db, "auctions"), {
       ...state,
@@ -77,7 +81,7 @@ const Sell = () => {
         required
       />
       <S.Label>Image</S.Label>
-      <S.Input type="file" />
+      <S.Input type="file" onChange={handleFileChange} />
       <S.Label htmlFor="description">Description</S.Label>
       <S.TextArea
         placeholder="Try to write something that you wish you will find if you read this"
