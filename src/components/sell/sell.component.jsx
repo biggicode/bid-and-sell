@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { db } from "../../config/firebase"
+import { db, storage } from "../../config/firebase"
 import * as S from "./sell.style"
 import { collection, addDoc } from "firebase/firestore"
+import { ref } from "firebase/storage"
 
 const initialValues = {
   auctionTitle: "",
@@ -18,6 +19,7 @@ const initialValues = {
 
 const Sell = () => {
   const [state, setState] = useState(initialValues)
+  const [imageUpload, setImageUpload] = useState(null)
 
   const {
     auctionTitle,
@@ -33,6 +35,16 @@ const Sell = () => {
     const { name, value } = e.target
 
     setState({ ...state, [name]: value })
+  }
+
+  const handleFileChange = (e) => {
+    setImageUpload(e.target.files[0])
+  }
+
+  const uploadImage = () => {
+    if (imageUpload == null) return
+
+    const imageRef = ref(storage, `images/${imageUpload.name + 1}`)
   }
 
   const resetForm = () => {
