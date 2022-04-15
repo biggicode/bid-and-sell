@@ -8,10 +8,13 @@ const initialValues = {
   imgName: "",
   description: "",
   startingPrice: 10,
+  currentPrice: 10,
   creatorName: "",
   creatorEmail: "",
   phoneNumber: "",
 }
+
+//TO DO: go to read and write settings and allow only register users in firebase (if true)
 
 const Sell = () => {
   const [state, setState] = useState(initialValues)
@@ -39,7 +42,10 @@ const Sell = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await addDoc(collection(db, "auctions"), state)
+    await addDoc(collection(db, "auctions"), {
+      ...state,
+      currentPrice: state.startingPrice,
+    })
 
     resetForm()
   }
