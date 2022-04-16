@@ -1,12 +1,33 @@
-import * as S from "./auction-card.style"
-import car from "./car.jpg"
+import { useEffect, useState } from "react"
 
-const AuctionCard = ({ auctionTitle, startingPrice, currentPrice }) => {
+import * as S from "./auction-card.style"
+import { storage } from "../../config/firebase"
+import { ref, getDownloadURL } from "firebase/storage"
+
+const AuctionCard = ({
+  auctionTitle,
+  startingPrice,
+  currentPrice,
+  imagePath,
+}) => {
+  const [imgUrl, setImageUrl] = useState("")
+  const pathReference = ref(storage, imagePath)
+
+  useEffect(() => {
+    getDownloadURL(pathReference)
+      .then((url) => {
+        setImageUrl(url)
+      })
+      .catch((error) => {
+        console.log("Can't get image card url", error)
+      })
+  }, [])
+
   return (
     <S.Card>
       <S.CardHeader>23:10</S.CardHeader>
       <S.CardBody>
-        <S.CardImg src={car} />
+        <S.CardImg src={imgUrl} />
         <S.AuctionTitle>{auctionTitle}</S.AuctionTitle>
         <S.PriceSection>
           <S.Price>

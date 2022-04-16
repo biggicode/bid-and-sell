@@ -30,6 +30,7 @@ const Auctions = () => {
               auctionTitle={auction.auctionTitle}
               startingPrice={auction.startingPrice}
               currentPrice={auction.currentPrice}
+              imagePath={auction.imagePath}
               key={auction.id}
             />
           )
