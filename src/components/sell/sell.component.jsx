@@ -7,7 +7,6 @@ import { v4 } from "uuid"
 
 const initialValues = {
   auctionTitle: "",
-  imgName: "",
   description: "",
   startingPrice: 10,
   currentPrice: 10,
@@ -24,7 +23,6 @@ const Sell = () => {
 
   const {
     auctionTitle,
-    imgName,
     description,
     startingPrice,
     creatorName,
@@ -53,14 +51,15 @@ const Sell = () => {
 
     if (imageUpload == null) return
 
-    const imagePath = `${imageUpload.name + v4()}`
+    const imagePath = `images/${imageUpload.name + v4()}`
 
-    const imageRef = ref(storage, `images/${imagePath}`)
+    const imageRef = ref(storage, imagePath)
     await uploadBytes(imageRef, imageUpload)
 
     await addDoc(collection(db, "auctions"), {
       ...state,
       currentPrice: state.startingPrice,
+      imagePath,
     })
 
     resetForm()
@@ -81,7 +80,7 @@ const Sell = () => {
         required
       />
       <S.Label>Image</S.Label>
-      <S.Input type="file" onChange={handleFileChange} />
+      <S.Input type="file" onChange={handleFileChange} required />
       <S.Label htmlFor="description">Description</S.Label>
       <S.TextArea
         placeholder="Try to write something that you wish you will find if you read this"
