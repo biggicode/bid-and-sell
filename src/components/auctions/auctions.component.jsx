@@ -32,6 +32,7 @@ const Auctions = () => {
               currentPrice={auction.currentPrice}
               imagePath={auction.imagePath}
               key={auction.id}
+              id={auction.id}
             />
           )
         })}

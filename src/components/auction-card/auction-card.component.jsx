@@ -9,6 +9,7 @@ const AuctionCard = ({
   startingPrice,
   currentPrice,
   imagePath,
+  id,
 }) => {
   const [imgUrl, setImageUrl] = useState("")
   const pathReference = ref(storage, imagePath)
@@ -40,7 +41,7 @@ const AuctionCard = ({
           </S.Price>
         </S.PriceSection>
         <S.ButtonSection>
-          <button type="button">Place bid!</button>
+          <S.Link to={`/auction/${id}`}>Place bid!</S.Link>
         </S.ButtonSection>
       </S.CardBody>
     </S.Card>

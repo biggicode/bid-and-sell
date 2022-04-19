@@ -1,5 +1,10 @@
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+
 const Auction = () => {
-  return <div>this is action</div>
+  const { id } = useParams()
+
+  return <div>this is action {id}</div>
 }
 
 export default Auction
