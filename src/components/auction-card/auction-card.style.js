@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link as RouterLink } from "react-router-dom"
 
 export const Card = styled.div`
   border: 2px solid #000;
@@ -44,4 +45,11 @@ export const ButtonSection = styled.div`
 
 export const AuctionTitle = styled.p`
   text-align: center;
+`
+
+export const Link = styled(RouterLink)`
+  padding: 1rem 0.5rem;
+  color: ${({ theme }) => theme.colors.light};
+  text-decoration: none;
+  background-color: ${({ theme }) => theme.colors.primary};
 `
