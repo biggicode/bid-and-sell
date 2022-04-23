@@ -1,7 +1,8 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Form = styled.form`
   border: 2px solid #333;
+  height: 500px;
   border-radius: 5px;
   grid-column: 1/-1;
   display: flex;
@@ -13,18 +14,18 @@ export const Form = styled.form`
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 400px;
   }
-`
+`;
 
 export const Label = styled.label`
   color: ${({ theme }) => theme.colors.dark};
-`
+`;
 
 export const Input = styled.input`
   padding: 0.5rem;
-`
+`;
 
 export const Submit = styled.button`
   margin: 1.5rem 0;
   padding: 0.5rem 1rem;
   border-radius: 6px;
-`
+`;

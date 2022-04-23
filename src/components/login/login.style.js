@@ -1,6 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Form = styled.form`
+  height: 500px;
   border: 2px solid #333;
   border-radius: 5px;
   grid-column: 1/-1;
@@ -13,21 +14,21 @@ export const Form = styled.form`
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 400px;
   }
-`
+`;
 
 export const Label = styled.label`
   color: ${({ theme }) => theme.colors.dark};
-`
+`;
 
 export const Input = styled.input`
   padding: 0.5rem;
-`
+`;
 
 export const Submit = styled.button`
   margin: 1.5rem 0;
   padding: 0.5rem 1rem;
   border-radius: 6px;
-`
+`;
 
 export const Button = styled.button`
   border-radius: 5px;
@@ -35,4 +36,4 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`
+`;
