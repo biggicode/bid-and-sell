@@ -38,12 +38,12 @@ const Auction = () => {
       <S.GreySection>Time remaining: 24h 20min</S.GreySection>
       <S.Img src={imageUrl} />
       <S.PriceSection>
-        <S.GreySection>Current Price: {auction.currentPrice}</S.GreySection>
+        <S.GreySection>Current Price: {auction?.currentPrice}</S.GreySection>
         <S.Button>Place bid!</S.Button>
       </S.PriceSection>
       <S.Description>
         <h3>Description</h3>
-        {auction.description}
+        {auction?.description}
       </S.Description>
     </>
   );
