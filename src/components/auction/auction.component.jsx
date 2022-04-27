@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
+import { useSelector } from "react-redux";
 
 import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
 
 const Auction = () => {
+  const currentUser = useSelector(({ user }) => user.currentUser);
   const { id } = useParams();
+  const auctionRef = doc(db, "auctions", id);
 
   const [auction, setAuction] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    onSnapshot(doc(db, "auctions", id), (doc) => {
+    onSnapshot(auctionRef, (doc) => {
       setAuction(doc.data());
     });
   }, []);
@@ -30,6 +33,12 @@ const Auction = () => {
 
   getImageUrl();
 
+  const placeTenPercent = async () => {
+    await updateDoc(auctionRef, {
+      currentPrice: Math.trunc(auction.currentPrice * 1.1),
+    });
+  };
+
   console.log(auction);
 
   return (
@@ -39,7 +48,14 @@ const Auction = () => {
       <S.Img src={imageUrl} />
       <S.PriceSection>
         <S.GreySection>Current Price: {auction?.currentPrice}</S.GreySection>
-        <S.Button>Place bid!</S.Button>
+        {currentUser ? (
+          <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
+        ) : (
+          <div>
+            In order to participate on this auction you have to register or log
+            in!
+          </div>
+        )}
       </S.PriceSection>
       <S.Description>
         <h3>Description</h3>
