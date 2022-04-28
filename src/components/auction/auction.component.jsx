@@ -54,7 +54,14 @@ const Auction = () => {
           Current Price: <span>{auction?.currentPrice}$</span>
         </S.GreySection>
         {currentUser ? (
-          <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
+          <>
+            <S.BidForm>
+              <S.FormTitle>Place amount</S.FormTitle>
+              <S.InputBidForm type="number" min={auction.currentPrice} />
+              <S.SubmitBidForm>Submit my bid amount</S.SubmitBidForm>
+            </S.BidForm>
+            <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
+          </>
         ) : (
           <div>
             In order to participate on this auction you have to{" "}

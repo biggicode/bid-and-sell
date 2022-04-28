@@ -19,6 +19,36 @@ export const GreySection = styled.div`
   height: 56px;
 `;
 
+export const BidForm = styled.form`
+  background-color: #f7f7f7;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const InputBidForm = styled.input`
+  padding: 0.5rem;
+`;
+
+export const SubmitBidForm = styled.button`
+  background-color: ${({ theme }) => theme.colors.warning};
+  color: ${({ theme }) => theme.colors.dark};
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 1.75rem;
+  width: 100%;
+  font-weight: 700;
+  box-shadow: 1px 2px 2px #000;
+  transition: 250ms;
+  cursor: pointer;
+`;
+
+export const FormTitle = styled.p`
+  font-weight: 900;
+`;
+
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.danger};
   color: ${({ theme }) => theme.colors.dark};
