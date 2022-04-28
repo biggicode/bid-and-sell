@@ -1,23 +1,22 @@
 import styled from "styled-components";
 
 export const AuctionTitle = styled.h2`
-  grid-column: span 8;
+  grid-column: 1/-1;
   font-size: 3rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: span 8;
+  }
 `;
 
 export const GreySection = styled.div`
   background-color: #f7f7f7;
-  grid-column: span 4;
-  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.25rem;
   font-size: 1rem;
   height: 56px;
-`;
-
-export const PriceSection = styled.div`
-  grid-column: span 4;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 `;
 
 export const Button = styled.button`
@@ -35,16 +34,36 @@ export const Button = styled.button`
 `;
 
 export const Img = styled.img`
-  grid-column: span 8;
+  grid-column: 1/-1;
   width: 100%;
   height: 550px;
   object-fit: cover;
   object-position: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: span 8;
+  }
 `;
 
 export const Description = styled.div`
   background-color: #f7f7f7;
-  grid-column: span 8;
   padding: 1.25rem;
   font-size: 1rem;
+  grid-column: 1/-1;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: span 8;
+  }
+`;
+
+export const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 1/-1;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: 9 / span 4;
+    grid-row: 1 / span 2;
+  }
 `;

@@ -45,10 +45,14 @@ const Auction = () => {
   return (
     <>
       <S.AuctionTitle>{auction?.auctionTitle}</S.AuctionTitle>
-      <S.GreySection>Time remaining: 24h 20min</S.GreySection>
       <S.Img src={imageUrl} />
-      <S.PriceSection>
-        <S.GreySection>Current Price: {auction?.currentPrice}</S.GreySection>
+      <S.RightSection>
+        <S.GreySection>
+          Time remaining: <span>24h 20min</span>
+        </S.GreySection>
+        <S.GreySection>
+          Current Price: <span>{auction?.currentPrice}$</span>
+        </S.GreySection>
         {currentUser ? (
           <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
         ) : (
@@ -58,7 +62,7 @@ const Auction = () => {
             <Link to="/login">log in!</Link>
           </div>
         )}
-      </S.PriceSection>
+      </S.RightSection>
       <S.Description>
         <h3>Description</h3>
         {auction?.description}
