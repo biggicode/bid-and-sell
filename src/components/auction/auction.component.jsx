@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
@@ -52,8 +53,9 @@ const Auction = () => {
           <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
         ) : (
           <div>
-            In order to participate on this auction you have to register or log
-            in!
+            In order to participate on this auction you have to{" "}
+            <Link to="/register">register</Link> or{" "}
+            <Link to="/login">log in!</Link>
           </div>
         )}
       </S.PriceSection>
