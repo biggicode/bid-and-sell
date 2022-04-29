@@ -15,10 +15,13 @@ const Auction = () => {
 
   const [auction, setAuction] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
+  const [bidAmount, setBidAmount] = useState("");
 
   useEffect(() => {
     onSnapshot(auctionRef, (doc) => {
-      setAuction(doc.data());
+      let fetchedDoc = doc.data();
+      setAuction(fetchedDoc);
+      // setBidAmount()
     });
   }, []);
 
@@ -40,6 +43,16 @@ const Auction = () => {
     });
   };
 
+  const handleAmountSubmit = async (e) => {
+    e.preventDefault();
+
+    if ((bidAmount <= auction.currentPrice) | !bidAmount) return;
+
+    await updateDoc(auctionRef, {
+      currentPrice: bidAmount,
+    });
+  };
+
   console.log(auction);
 
   return (
@@ -55,9 +68,14 @@ const Auction = () => {
         </S.GreySection>
         {currentUser ? (
           <>
-            <S.BidForm>
+            <S.BidForm onSubmit={handleAmountSubmit}>
               <S.FormTitle>Place amount</S.FormTitle>
-              <S.InputBidForm type="number" min={auction.currentPrice} />
+              <S.InputBidForm
+                type="number"
+                min={auction?.currentPrice}
+                value={bidAmount}
+                onChange={(e) => setBidAmount(e.target.value)}
+              />
               <S.SubmitBidForm>Submit my bid amount</S.SubmitBidForm>
             </S.BidForm>
             <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
