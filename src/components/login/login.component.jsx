@@ -1,54 +1,54 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 
-import * as S from "./login.style"
+import * as S from "./login.style";
 import {
   facebookLogInInitiate,
   googleLogInInitiate,
   loginInitiate,
-} from "../../redux/user.action"
+} from "../../redux/user.action";
 
 const Login = () => {
   const [state, setState] = useState({
     email: "",
     password: "",
-  })
+  });
 
-  const { email, password } = state
+  const { email, password } = state;
 
-  const { currentUser } = useSelector((state) => state.user)
+  const { currentUser } = useSelector((state) => state.user);
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/")
+      navigate("/");
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   const handleGoogleSignIn = () => {
-    dispatch(googleLogInInitiate())
-  }
+    dispatch(googleLogInInitiate());
+  };
   const handleFBSignIn = () => {
-    dispatch(facebookLogInInitiate())
-  }
+    dispatch(facebookLogInInitiate());
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!email || !password) {
-      return
+      return;
     }
-    dispatch(loginInitiate(email, password))
-    setState({ email: "", password: "" })
-  }
+    dispatch(loginInitiate(email, password));
+    setState({ email: "", password: "" });
+  };
 
   const handleChange = (e) => {
-    let { name, value } = e.target
-    setState({ ...state, [name]: value })
-  }
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
 
   return (
     <S.Form onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ const Login = () => {
       <p>Don't have an account</p>
       <Link to="/register">Create new account</Link>
     </S.Form>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
