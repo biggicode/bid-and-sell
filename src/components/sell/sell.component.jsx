@@ -46,21 +46,29 @@ const Sell = () => {
 
   const resetForm = () => {
     setState(initialValues);
+    setImageUpload(null);
   };
+
+  const imgTypes = ["image/png", "image/jpeg", "image/jpg"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (imageUpload == null) return;
+    if (!imgTypes.includes(imageUpload.type)) return;
+    //TO DO : add custom errors with state
+    let currentDate = new Date();
+    let dueDate = currentDate.setHours(
+      currentDate.getHours() + Number(auctionDuration)
+    );
 
     const imagePath = `images/${imageUpload.name + v4()}`;
-
     const imageRef = ref(storage, imagePath);
     await uploadBytes(imageRef, imageUpload);
 
     await addDoc(collection(db, "auctions"), {
       ...state,
       currentPrice: state.startingPrice,
+      dueDate,
       imagePath,
     });
 
