@@ -19,6 +19,7 @@ const initialValues = {
 //TO DO: go to read and write settings and allow only register users in firebase (if true)
 
 const Sell = () => {
+  //TO DO: Check if user is logged in
   const [state, setState] = useState(initialValues);
   const [imageUpload, setImageUpload] = useState(null);
 
