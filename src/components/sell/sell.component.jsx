@@ -4,6 +4,7 @@ import * as S from "./sell.style";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
+import { useSelector } from "react-redux";
 
 const initialValues = {
   auctionTitle: "",
@@ -20,6 +21,8 @@ const initialValues = {
 
 const Sell = () => {
   //TO DO: Check if user is logged in
+  const currentUser = useSelector(({ user }) => user.currentUser);
+  const { email, uid } = currentUser;
   const [state, setState] = useState(initialValues);
   const [imageUpload, setImageUpload] = useState(null);
 
@@ -29,7 +32,7 @@ const Sell = () => {
     startingPrice,
     auctionDuration,
     creatorName,
-    creatorEmail,
+    // creatorEmail,
     phoneNumber,
   } = state;
 
@@ -69,6 +72,8 @@ const Sell = () => {
     await addDoc(collection(db, "auctions"), {
       ...state,
       currentPrice: state.startingPrice,
+      creatorId: uid,
+      creatorEmail: email,
       dueDate,
       imagePath,
     });
@@ -138,8 +143,9 @@ const Sell = () => {
         type="mail"
         name="creatorEmail"
         id="creatorEmail"
-        value={creatorEmail}
-        onChange={handleInputChange}
+        value={email}
+        // onChange={handleInputChange}
+        readOnly
         required
       />
       <S.Label htmlFor="phoneNumber">Phone number</S.Label>
