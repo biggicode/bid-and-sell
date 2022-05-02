@@ -43,6 +43,8 @@ const Auction = () => {
   const placeTenPercent = async () => {
     await updateDoc(auctionRef, {
       currentPrice: Math.trunc(auction.currentPrice * 1.1),
+      winnerEmail: currentUser.email,
+      winnerId: currentUser.uid,
     });
   };
 
@@ -53,6 +55,8 @@ const Auction = () => {
 
     await updateDoc(auctionRef, {
       currentPrice: bidAmount,
+      winnerEmail: currentUser.email,
+      winnerId: currentUser.uid,
     });
   };
 

@@ -22,7 +22,6 @@ const initialValues = {
 const Sell = () => {
   //TO DO: Check if user is logged in
   const currentUser = useSelector(({ user }) => user.currentUser);
-  const { email, uid } = currentUser;
   const [state, setState] = useState(initialValues);
   const [imageUpload, setImageUpload] = useState(null);
 
@@ -72,8 +71,8 @@ const Sell = () => {
     await addDoc(collection(db, "auctions"), {
       ...state,
       currentPrice: state.startingPrice,
-      creatorId: uid,
-      creatorEmail: email,
+      creatorId: currentUser.uid,
+      creatorEmail: currentUser.email,
       dueDate,
       imagePath,
     });
@@ -143,7 +142,7 @@ const Sell = () => {
         type="mail"
         name="creatorEmail"
         id="creatorEmail"
-        value={email}
+        value={currentUser.email}
         // onChange={handleInputChange}
         readOnly
         required
