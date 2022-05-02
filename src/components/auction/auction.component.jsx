@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 
 import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
-
+import { GetAuctionTime } from "../../utils/auction-time";
 //TO DO: validate image type
 //TO DO: go into firebase console and update read/write
+//To do: nu lasa userul sa isi faca bid la propria oferta
 
 const Auction = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
@@ -19,6 +20,7 @@ const Auction = () => {
   const [auction, setAuction] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [bidAmount, setBidAmount] = useState("");
+  const [remainingTime, setRemainingTime] = useState({});
 
   useEffect(() => {
     onSnapshot(auctionRef, (doc) => {
@@ -27,6 +29,12 @@ const Auction = () => {
       // setBidAmount()
     });
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRemainingTime(GetAuctionTime(auction.dueDate));
+    }, 1000 * 5);
+  });
 
   const getImageUrl = () => {
     if (!auction) return;
@@ -68,7 +76,10 @@ const Auction = () => {
       <S.Img src={imageUrl} />
       <S.RightSection>
         <S.GreySection>
-          Time remaining: <span>24h 20min</span>
+          Time remaining:{" "}
+          <span>
+            {remainingTime.hours}ore {remainingTime.minutes}minute
+          </span>
         </S.GreySection>
         <S.GreySection>
           Current Price: <span>{auction?.currentPrice}$</span>
