@@ -5,6 +5,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   auctionTitle: "",
@@ -24,6 +25,8 @@ const Sell = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [state, setState] = useState(initialValues);
   const [imageUpload, setImageUpload] = useState(null);
+
+  const navigate = useNavigate();
 
   const {
     auctionTitle,
@@ -68,7 +71,7 @@ const Sell = () => {
     const imageRef = ref(storage, imagePath);
     await uploadBytes(imageRef, imageUpload);
 
-    await addDoc(collection(db, "auctions"), {
+    const docRef = await addDoc(collection(db, "auctions"), {
       ...state,
       currentPrice: state.startingPrice,
       creatorId: currentUser.uid,
@@ -78,6 +81,7 @@ const Sell = () => {
     });
 
     resetForm();
+    navigate(`/auction/${docRef.id}`);
   };
 
   return (

@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  onSnapshot,
+  updateDoc,
+  setDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
@@ -22,16 +29,32 @@ const Auction = () => {
   const [bidAmount, setBidAmount] = useState("");
   const [remainingTime, setRemainingTime] = useState({});
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    onSnapshot(auctionRef, (doc) => {
-      let fetchedDoc = doc.data();
-      setAuction(fetchedDoc);
+    onSnapshot(auctionRef, (document) => {
+      let now = new Date();
+      let fetchedDoc = document.data();
+
+      console.log("Document fetched");
+      if (Number(fetchedDoc.dueDate) < now.getTime()) {
+        const moveDocument = async () => {
+          await setDoc(doc(db, "finished", id), fetchedDoc);
+          await deleteDoc(doc(db, "auctions", id));
+          navigate("/");
+        };
+
+        moveDocument();
+      } else {
+        setAuction(fetchedDoc);
+      }
       // setBidAmount()
     });
   }, []);
 
   useEffect(() => {
     setTimeout(() => {
+      if (!auction) return;
       setRemainingTime(GetAuctionTime(auction.dueDate));
     }, 1000 * 5);
   });
