@@ -33,21 +33,10 @@ const Auction = () => {
 
   useEffect(() => {
     onSnapshot(auctionRef, (document) => {
-      let now = new Date();
       let fetchedDoc = document.data();
 
       console.log("Document fetched");
-      if (Number(fetchedDoc.dueDate) < now.getTime()) {
-        const moveDocument = async () => {
-          await setDoc(doc(db, "finished", id), fetchedDoc);
-          await deleteDoc(doc(db, "auctions", id));
-          navigate("/");
-        };
-
-        moveDocument();
-      } else {
-        setAuction(fetchedDoc);
-      }
+      setAuction(fetchedDoc);
       // setBidAmount()
     });
   }, []);
@@ -57,6 +46,20 @@ const Auction = () => {
       if (!auction) return;
       setRemainingTime(GetAuctionTime(auction.dueDate));
     }, 1000 * 5);
+  });
+
+  useEffect(() => {
+    let now = new Date();
+    console.log("time checked");
+    if (auction && Number(auction.dueDate) < now.getTime()) {
+      const moveDocument = async () => {
+        await setDoc(doc(db, "finished", id), auction);
+        await deleteDoc(doc(db, "auctions", id));
+        navigate("/");
+      };
+
+      moveDocument();
+    }
   });
 
   const getImageUrl = () => {
