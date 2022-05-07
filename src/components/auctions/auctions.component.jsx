@@ -1,25 +1,27 @@
-import { useEffect, useState } from "react"
-import { collection, onSnapshot } from "firebase/firestore"
-import { db } from "../../config/firebase"
+import { useEffect, useState } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
-import Row from "../grid-system/row"
-import Grid from "../grid-system/grid"
-import AuctionCard from "../auction-card"
+import Row from "../grid-system/row";
+import Grid from "../grid-system/grid";
+import AuctionCard from "../auction-card";
+
+//TO DO: display a message when is no auctions
 
 const Auctions = () => {
-  const [auctionsList, setAuctionsList] = useState([])
+  const [auctionsList, setAuctionsList] = useState([]);
 
   useEffect(() => {
     onSnapshot(collection(db, "auctions"), (querySnapshot) => {
-      const list = []
+      const list = [];
       querySnapshot.forEach((doc) => {
-        list.push({ id: doc.id, ...doc.data() })
-      })
+        list.push({ id: doc.id, ...doc.data() });
+      });
 
-      setAuctionsList(list)
-      console.log(list)
-    })
-  }, [])
+      setAuctionsList(list);
+      console.log(list);
+    });
+  }, []);
   //TO DO: protect auction id with usefull 1:42
   return (
     <Row>
@@ -34,11 +36,11 @@ const Auctions = () => {
               key={auction.id}
               id={auction.id}
             />
-          )
+          );
         })}
       </Grid>
     </Row>
-  )
-}
+  );
+};
 
-export default Auctions
+export default Auctions;

@@ -1,69 +1,88 @@
-import { useState } from "react"
-import { db, storage } from "../../config/firebase"
-import * as S from "./sell.style"
-import { collection, addDoc } from "firebase/firestore"
-import { ref, uploadBytes } from "firebase/storage"
-import { v4 } from "uuid"
+import { useState } from "react";
+import { db, storage } from "../../config/firebase";
+import * as S from "./sell.style";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   auctionTitle: "",
   description: "",
   startingPrice: 10,
   currentPrice: 10,
+  auctionDuration: 1,
   creatorName: "",
   creatorEmail: "",
   phoneNumber: "",
-}
+};
 
 //TO DO: go to read and write settings and allow only register users in firebase (if true)
 
 const Sell = () => {
-  const [state, setState] = useState(initialValues)
-  const [imageUpload, setImageUpload] = useState(null)
+  //TO DO: Check if user is logged in
+  const currentUser = useSelector(({ user }) => user.currentUser);
+  const [state, setState] = useState(initialValues);
+  const [imageUpload, setImageUpload] = useState(null);
+
+  const navigate = useNavigate();
 
   const {
     auctionTitle,
     description,
     startingPrice,
+    auctionDuration,
     creatorName,
-    creatorEmail,
+    // creatorEmail,
     phoneNumber,
-  } = state
+  } = state;
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
-    setState({ ...state, [name]: value })
-  }
+    setState({ ...state, [name]: value });
+  };
 
   const handleFileChange = (e) => {
-    setImageUpload(e.target.files[0])
-  }
+    setImageUpload(e.target.files[0]);
+  };
 
-  const uploadImage = () => {}
+  const uploadImage = () => {};
 
   const resetForm = () => {
-    setState(initialValues)
-  }
+    setState(initialValues);
+    setImageUpload(null);
+  };
+
+  const imgTypes = ["image/png", "image/jpeg", "image/jpg"];
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (imageUpload == null) return
+    if (!imgTypes.includes(imageUpload.type)) return;
+    //TO DO : add custom errors with state
+    let currentDate = new Date();
+    let dueDate = currentDate.setHours(
+      currentDate.getHours() + Number(auctionDuration)
+    );
 
-    const imagePath = `images/${imageUpload.name + v4()}`
+    const imagePath = `images/${imageUpload.name + v4()}`;
+    const imageRef = ref(storage, imagePath);
+    await uploadBytes(imageRef, imageUpload);
 
-    const imageRef = ref(storage, imagePath)
-    await uploadBytes(imageRef, imageUpload)
-
-    await addDoc(collection(db, "auctions"), {
+    const docRef = await addDoc(collection(db, "auctions"), {
       ...state,
       currentPrice: state.startingPrice,
+      creatorId: currentUser.uid,
+      creatorEmail: currentUser.email,
+      dueDate,
       imagePath,
-    })
+    });
 
-    resetForm()
-  }
+    resetForm();
+    navigate(`/auction/${docRef.id}`);
+  };
 
   return (
     <S.Form onSubmit={handleSubmit}>
@@ -99,6 +118,18 @@ const Sell = () => {
         onChange={handleInputChange}
         required
       />
+      <S.Label htmlFor="auctionDuration">Auction duration in hours:</S.Label>
+      <S.Input
+        type="number"
+        name="auctionDuration"
+        id="auctionDuration"
+        step="1"
+        max="24"
+        min="1"
+        value={auctionDuration}
+        onChange={handleInputChange}
+        required
+      />
       <S.Separator />
       <S.SemiTitle>Contact info</S.SemiTitle>
       <S.Label htmlFor="creatorName">Your name</S.Label>
@@ -115,8 +146,9 @@ const Sell = () => {
         type="mail"
         name="creatorEmail"
         id="creatorEmail"
-        value={creatorEmail}
-        onChange={handleInputChange}
+        value={currentUser.email}
+        // onChange={handleInputChange}
+        readOnly
         required
       />
       <S.Label htmlFor="phoneNumber">Phone number</S.Label>
@@ -131,7 +163,7 @@ const Sell = () => {
       <S.Separator />
       <S.Button type="submit">Create auction!</S.Button>
     </S.Form>
-  )
-}
+  );
+};
 
-export default Sell
+export default Sell;

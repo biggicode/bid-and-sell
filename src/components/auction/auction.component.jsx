@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  onSnapshot,
+  updateDoc,
+  setDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
-
+import { GetAuctionTime } from "../../utils/auction-time";
 //TO DO: validate image type
 //TO DO: go into firebase console and update read/write
+//To do: nu lasa userul sa isi faca bid la propria oferta
 
 const Auction = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
@@ -19,14 +27,40 @@ const Auction = () => {
   const [auction, setAuction] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [bidAmount, setBidAmount] = useState("");
+  const [remainingTime, setRemainingTime] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    onSnapshot(auctionRef, (doc) => {
-      let fetchedDoc = doc.data();
+    onSnapshot(auctionRef, (document) => {
+      let fetchedDoc = document.data();
+
+      console.log("Document fetched");
       setAuction(fetchedDoc);
       // setBidAmount()
     });
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!auction) return;
+      setRemainingTime(GetAuctionTime(auction.dueDate));
+    }, 1000 * 5);
+  });
+
+  useEffect(() => {
+    let now = new Date();
+    console.log("time checked");
+    if (auction && Number(auction.dueDate) < now.getTime()) {
+      const moveDocument = async () => {
+        await setDoc(doc(db, "finished", id), auction);
+        await deleteDoc(doc(db, "auctions", id));
+        navigate("/");
+      };
+
+      moveDocument();
+    }
+  });
 
   const getImageUrl = () => {
     if (!auction) return;
@@ -43,6 +77,8 @@ const Auction = () => {
   const placeTenPercent = async () => {
     await updateDoc(auctionRef, {
       currentPrice: Math.trunc(auction.currentPrice * 1.1),
+      winnerEmail: currentUser.email,
+      winnerId: currentUser.uid,
     });
   };
 
@@ -53,6 +89,8 @@ const Auction = () => {
 
     await updateDoc(auctionRef, {
       currentPrice: bidAmount,
+      winnerEmail: currentUser.email,
+      winnerId: currentUser.uid,
     });
   };
 
@@ -64,7 +102,10 @@ const Auction = () => {
       <S.Img src={imageUrl} />
       <S.RightSection>
         <S.GreySection>
-          Time remaining: <span>24h 20min</span>
+          Time remaining:{" "}
+          <span>
+            {remainingTime.hours}ore {remainingTime.minutes}minute
+          </span>
         </S.GreySection>
         <S.GreySection>
           Current Price: <span>{auction?.currentPrice}$</span>
