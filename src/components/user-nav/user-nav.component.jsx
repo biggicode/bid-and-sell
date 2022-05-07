@@ -14,7 +14,9 @@ const UserNav = ({ handleLogOut }) => {
         <S.UserNavBody>
           <S.StyledLink to="/">Licitatile mele</S.StyledLink>
           <S.StyledLink to="/">Licitatii castigate</S.StyledLink>
-          <button onClick={handleLogOut}>Log Out</button>
+          <button onClick={handleLogOut}>
+            Log Out <i className="icon__log-out" />
+          </button>
         </S.UserNavBody>
       )}
     </S.DesktopUserNav>

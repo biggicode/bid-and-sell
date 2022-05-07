@@ -24,7 +24,8 @@ export const UserNavBody = styled.div`
   position: absolute;
   bottom: -100px;
   right: 0px;
-  width: 150px;
+  width: 130px;
+  background-color: ${({ theme }) => theme.colors.primaryDarker};
 `;
 
 export const Chevron = styled.i`
