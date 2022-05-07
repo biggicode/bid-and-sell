@@ -42,7 +42,7 @@ const Nav = ({ openNav, handleNavLinkClick }) => {
             LOG OUT
           </button>
         ) : (
-          <UserNav />
+          <UserNav handleLogOut={handleLogOut} />
         )
       ) : (
         <>
