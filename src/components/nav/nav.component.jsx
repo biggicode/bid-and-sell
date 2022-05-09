@@ -5,25 +5,15 @@ import { logoutInitiate } from "../../redux/user.action";
 import UserNav from "../user-nav";
 import * as S from "./nav.style";
 
-const Nav = ({ openNav, handleNavLinkClick }) => {
+const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
   const { currentUser } = useSelector((state) => state.user);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
   const dispatch = useDispatch();
-
-  const updateMedia = () => {
-    setIsMobile(window.innerWidth < 769);
-  };
 
   const handleLogOut = () => {
     if (currentUser) {
       dispatch(logoutInitiate());
     }
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateMedia);
-    return () => window.removeEventListener("resize", updateMedia);
-  });
 
   return (
     <S.Nav openNav={openNav}>
@@ -36,23 +26,23 @@ const Nav = ({ openNav, handleNavLinkClick }) => {
       <S.Link to="/sell" onClick={handleNavLinkClick}>
         Sell
       </S.Link>
-      {currentUser ? (
-        isMobile ? (
+      {isMobile ? (
+        currentUser ? (
           <button onClick={handleLogOut} type="button">
             LOG OUT
           </button>
         ) : (
-          <UserNav handleLogOut={handleLogOut} />
+          <>
+            <S.Link to="/login" onClick={handleNavLinkClick}>
+              LOGIN
+            </S.Link>
+            <S.Link to="/register" onClick={handleNavLinkClick}>
+              REGISTER
+            </S.Link>
+          </>
         )
       ) : (
-        <>
-          <S.Link to="/login" onClick={handleNavLinkClick}>
-            LOGIN
-          </S.Link>
-          <S.Link to="/register" onClick={handleNavLinkClick}>
-            REGISTER
-          </S.Link>
-        </>
+        ""
       )}
     </S.Nav>
   );
