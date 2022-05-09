@@ -39,20 +39,19 @@ const Header = () => {
         handleNavLinkClick={handleNavLinkClick}
         isMobile={isMobile}
       />
-      {isMobile ? (
-        ""
-      ) : currentUser ? (
-        <UserNav />
-      ) : (
-        <div>
-          <S.Link to="/login" onClick={handleNavLinkClick}>
-            LOGIN
-          </S.Link>
-          <S.Link to="/register" onClick={handleNavLinkClick}>
-            REGISTER
-          </S.Link>
-        </div>
-      )}
+      {!isMobile &&
+        (currentUser ? (
+          <UserNav />
+        ) : (
+          <div>
+            <S.Link to="/login" onClick={handleNavLinkClick}>
+              LOGIN
+            </S.Link>
+            <S.Link to="/register" onClick={handleNavLinkClick}>
+              REGISTER
+            </S.Link>
+          </div>
+        ))}
     </S.Header>
   );
 };

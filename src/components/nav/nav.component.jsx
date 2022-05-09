@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutInitiate } from "../../redux/user.action";
 
-import UserNav from "../user-nav";
 import * as S from "./nav.style";
 
 const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
@@ -26,8 +24,8 @@ const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
       <S.Link to="/sell" onClick={handleNavLinkClick}>
         Sell
       </S.Link>
-      {isMobile ? (
-        currentUser ? (
+      {isMobile &&
+        (currentUser ? (
           <button onClick={handleLogOut} type="button">
             LOG OUT
           </button>
@@ -40,10 +38,7 @@ const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
               REGISTER
             </S.Link>
           </>
-        )
-      ) : (
-        ""
-      )}
+        ))}
     </S.Nav>
   );
 };
