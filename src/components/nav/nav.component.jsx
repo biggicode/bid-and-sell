@@ -26,9 +26,23 @@ const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
       </S.Link>
       {isMobile &&
         (currentUser ? (
-          <button onClick={handleLogOut} type="button">
-            LOG OUT
-          </button>
+          <>
+            <S.ProfileDiv>
+              <i className="icon__user" />
+              {currentUser.displayName === ""
+                ? currentUser.email
+                : currentUser.displayName}
+            </S.ProfileDiv>
+            <S.Link to="/licitatilemele" onClick={handleNavLinkClick}>
+              Licitatile mele
+            </S.Link>
+            <S.Link to="/licitatiicastigate" onClick={handleNavLinkClick}>
+              Licitatii castigate
+            </S.Link>
+            <button onClick={handleLogOut} type="button">
+              LOG OUT
+            </button>
+          </>
         ) : (
           <>
             <S.Link to="/login" onClick={handleNavLinkClick}>
