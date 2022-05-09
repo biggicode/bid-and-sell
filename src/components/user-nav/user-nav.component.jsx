@@ -12,8 +12,10 @@ const UserNav = ({ handleLogOut }) => {
       <S.Chevron open={open} className="icon__arrow_down" />
       {open && (
         <S.UserNavBody>
-          <S.StyledLink to="/">Licitatile mele</S.StyledLink>
-          <S.StyledLink to="/">Licitatii castigate</S.StyledLink>
+          <S.StyledLink to="/licitatilemele">Licitatile mele</S.StyledLink>
+          <S.StyledLink to="/licitatiicastigate">
+            Licitatii castigate
+          </S.StyledLink>
           <button onClick={handleLogOut}>
             Log Out <i className="icon__log-out" />
           </button>
