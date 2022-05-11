@@ -19,7 +19,28 @@ const MyAuctions = () => {
       collection(db, "finished"),
       where("creatorId", "==", currentUser.uid)
     );
+
+    onSnapshot(liveQ, (querySnapshot) => {
+      const list = [];
+      querySnapshot.forEach((doc) => {
+        list.push(doc.data());
+      });
+
+      setLiveAuctions(list);
+    });
+
+    onSnapshot(finishedQ, (querySnapshot) => {
+      const list = [];
+      querySnapshot.forEach((doc) => {
+        list.push(doc.data());
+      });
+
+      setFinishedAuctions(list);
+    });
   }, []);
+
+  console.log("live auctions:", liveAuctions);
+  console.log("finsihed auctions:", finishedAuctions);
 
   return <div>my auctions</div>;
 };
