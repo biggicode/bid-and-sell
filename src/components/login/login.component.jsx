@@ -58,7 +58,7 @@ const Login = () => {
         Sign In with Google
       </S.Button>
       <S.Button type="button" onClick={handleFBSignIn}>
-        <i className="icon__google" />
+        <i className="icon__facebook" />
         Sign In with FaceBook
       </S.Button>
       <p>OR</p>

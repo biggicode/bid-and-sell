@@ -30,12 +30,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon__log-out:before {
+  content: "\e907";
+}
+.icon__arrow_down:before {
+  content: "\e901";
+  font-size: 1.5rem;
+}
 .icon__auction:before {
-  content: "\e900";
+  content: "\e903";
+}
+.icon__facebook:before {
+  content: "\e904";
+  color: #1877f2;
+}
+.icon__trophy:before {
+  content: "\e905";
 }
 .icon__google:before {
-  content: "\ea8a";
+  content: "\e906";
 }
-.icon__github:before {
-  content: "\eab0";
+.icon__user:before {
+  content: "\e900";
 }

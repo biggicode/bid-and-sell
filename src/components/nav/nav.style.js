@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Link as RouterLink } from "react-router-dom"
+import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Nav = styled.nav`
   display: flex;
@@ -18,10 +18,16 @@ export const Nav = styled.nav`
     background-color: ${({ theme }) => theme.colors.primaryDarker};
     transition: transform 250ms ease-in-out;
   }
-`
+`;
 
 export const Link = styled(RouterLink)`
   padding: 1rem 0.5rem;
   color: ${({ theme }) => theme.colors.light};
   text-decoration: none;
-`
+`;
+
+export const ProfileDiv = styled.div`
+  color: white;
+  display: flex;
+  gap: 0.25rem;
+`;

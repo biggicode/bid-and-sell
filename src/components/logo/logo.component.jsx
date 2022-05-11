@@ -1,12 +1,12 @@
-import * as S from "./logo.style"
+import * as S from "./logo.style";
 
 const Logo = () => {
   return (
-    <S.Logo>
+    <S.Logo to="/">
       <S.Icon className="icon__auction" />
       <S.Text>Bid & Sell</S.Text>
     </S.Logo>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;
