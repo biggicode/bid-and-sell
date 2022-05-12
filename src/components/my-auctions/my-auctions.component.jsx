@@ -4,6 +4,8 @@ import { collection, query, where, onSnapshot } from "firebase/firestore";
 
 import { db } from "../../config/firebase";
 
+//To do: make auction delete
+
 const MyAuctions = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [liveAuctions, setLiveAuctions] = useState([]);
