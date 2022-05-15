@@ -42,11 +42,13 @@ export const Input = styled.input`
 export const Submit = styled.button`
   height: 70px;
   border-radius: 13px;
+  border: none;
   background: linear-gradient(to left, #ff9f7c, #bb3fdd);
   font-size: 1.25rem;
   //Semi-bold
   font-weight: 600;
   color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 `;
 
 export const StyledLink = styled(Link)`
