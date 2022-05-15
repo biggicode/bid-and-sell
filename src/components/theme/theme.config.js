@@ -1,11 +1,12 @@
 const colors = {
-  light: "#F7F7FF",
+  white: "#FFF",
   danger: "#6AED12",
   warning: "#EDDF12",
   primary: "#1D1D26",
   primaryDarker: "#3D0FBE",
   dark: "#090909",
   border: "#707070",
+  grey: "#C3C3C4",
 };
 
 const breakpoints = {

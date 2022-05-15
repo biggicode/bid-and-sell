@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Burger = styled.div`
   width: 2rem;
@@ -18,7 +18,7 @@ export const Burger = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ theme }) => theme.colors.light};
+    background-color: ${({ theme }) => theme.colors.white};
     transform-origin: 1px;
     transition: all 250ms linear;
 
@@ -36,4 +36,4 @@ export const Burger = styled.div`
       transform: ${({ openNav }) => (openNav ? "rotate(-45deg)" : "rotate(0)")};
     }
   }
-`
+`;

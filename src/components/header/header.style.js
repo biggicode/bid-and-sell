@@ -17,6 +17,6 @@ export const Header = styled.header`
 
 export const Link = styled(RouterLink)`
   padding: 1rem 0.5rem;
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.white};
   text-decoration: none;
 `;

@@ -5,7 +5,7 @@ export const Logo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Icon = styled.i`
@@ -13,6 +13,6 @@ export const Icon = styled.i`
 `;
 
 export const Text = styled.p`
-  border-left: 2px solid ${({ theme }) => theme.colors.light};
+  border-left: 2px solid ${({ theme }) => theme.colors.white};
   padding-left: 3px;
 `;
