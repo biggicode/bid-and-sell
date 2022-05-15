@@ -7,6 +7,8 @@ import Burger from "../burger";
 import Nav from "../nav";
 import UserNav from "../user-nav";
 
+//To do: bug if you refresh in my auctions
+
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
@@ -45,10 +47,10 @@ const Header = () => {
         ) : (
           <div>
             <S.Link to="/login" onClick={handleNavLinkClick}>
-              LOGIN
+              Log in
             </S.Link>
-            <S.Link to="/register" onClick={handleNavLinkClick}>
-              REGISTER
+            <S.Link type="register" to="/register" onClick={handleNavLinkClick}>
+              Register
             </S.Link>
           </div>
         ))}

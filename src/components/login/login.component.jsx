@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 import * as S from "./login.style";
-import {
-  facebookLogInInitiate,
-  googleLogInInitiate,
-  loginInitiate,
-} from "../../redux/user.action";
+import { loginInitiate } from "../../redux/user.action";
+import AuthButton from "../auth-button";
 
 const Login = () => {
   const [state, setState] = useState({
@@ -28,13 +25,6 @@ const Login = () => {
     }
   }, [currentUser]);
 
-  const handleGoogleSignIn = () => {
-    dispatch(googleLogInInitiate());
-  };
-  const handleFBSignIn = () => {
-    dispatch(facebookLogInInitiate());
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -53,15 +43,9 @@ const Login = () => {
   return (
     <S.Form onSubmit={handleSubmit}>
       <h2>Log In!</h2>
-      <S.Button type="button" onClick={handleGoogleSignIn}>
-        <i className="icon__google" />
-        Sign In with Google
-      </S.Button>
-      <S.Button type="button" onClick={handleFBSignIn}>
-        <i className="icon__facebook" />
-        Sign In with FaceBook
-      </S.Button>
-      <p>OR</p>
+      <AuthButton type="Google" />
+      <AuthButton type="Facebook" />
+      <p>or</p>
       <S.Label>Email</S.Label>
       <S.Input
         type="email"

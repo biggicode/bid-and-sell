@@ -35,6 +35,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
+        <div style={{ height: "65px" }}></div>
         <Grid fullHeight={true} addPadding={true}>
           <Routes>
             <Route path="/" element={<Home />} />

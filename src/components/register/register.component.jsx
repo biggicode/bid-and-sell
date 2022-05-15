@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, Link } from "react-router-dom"
-import { registerInitiate } from "../../redux/user.action"
-import * as S from "./register.style"
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+
+import * as S from "./register.style";
+import AuthButton from "../auth-button";
+import { registerInitiate } from "../../redux/user.action";
 
 const Register = () => {
   const [state, setState] = useState({
@@ -10,39 +12,42 @@ const Register = () => {
     email: "",
     password: "",
     passwordConfirm: "",
-  })
-  const { currentUser } = useSelector((state) => state.user)
+  });
+  const { currentUser } = useSelector((state) => state.user);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/")
+      navigate("/");
     }
-  }, [currentUser])
+  }, [currentUser]);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const { displayName, email, password, passwordConfirm } = state
+  const { displayName, email, password, passwordConfirm } = state;
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (password !== passwordConfirm) {
-      return
+      return;
     }
 
-    dispatch(registerInitiate(email, password, displayName))
-    setState({ email: "", displayName: "", password: "", passwordConfirm: "" })
-  }
+    dispatch(registerInitiate(email, password, displayName));
+    setState({ email: "", displayName: "", password: "", passwordConfirm: "" });
+  };
 
   const handleChange = (e) => {
-    let { name, value } = e.target
-    setState({ ...state, [name]: value })
-  }
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <h2>Register!</h2>
+      <S.FormTitle>Register!</S.FormTitle>
+      <AuthButton type="Google" />
+      <AuthButton type="Facebook" />
+      <S.CenteredP>or</S.CenteredP>
       <S.Label>Name</S.Label>
       <S.Input
         type="text"
@@ -59,7 +64,7 @@ const Register = () => {
         value={email}
         required
       />
-      <S.Label>Passowrd</S.Label>
+      <S.Label>Passoword</S.Label>
       <S.Input
         type="password"
         name="password"
@@ -76,10 +81,11 @@ const Register = () => {
         required
       />
       <S.Submit type="submit">Register!</S.Submit>
-      <p>Already have an account?</p>
-      <Link to="/login">Log In</Link>
+      <S.CenteredP>
+        Already have an account?<S.StyledLink to="/login">Log In</S.StyledLink>
+      </S.CenteredP>
     </S.Form>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
