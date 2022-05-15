@@ -8,4 +8,6 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: ${({ theme }) => theme.colors.primary};
+  gap: 0.25rem;
 `;

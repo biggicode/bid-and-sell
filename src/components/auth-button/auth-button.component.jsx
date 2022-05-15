@@ -6,17 +6,22 @@ import {
   googleLogInInitiate,
 } from "../../redux/user.action";
 
-const handleGoogleSignIn = () => {
-  dispatch(googleLogInInitiate());
-};
-const handleFBSignIn = () => {
-  dispatch(facebookLogInInitiate());
-};
-
 const AuthButton = ({ type }) => {
   const dispatch = useDispatch();
 
-  return <div></div>;
+  const handleGoogleSignIn = () => {
+    dispatch(googleLogInInitiate());
+  };
+  const handleFBSignIn = () => {
+    dispatch(facebookLogInInitiate());
+  };
+
+  return (
+    <S.Button onClick={type === "Google" ? handleGoogleSignIn : handleFBSignIn}>
+      Continuati cu {type}
+      <i className={type === "Google" ? "icon__google" : "icon__facebook"} />
+    </S.Button>
+  );
 };
 
 export default AuthButton;

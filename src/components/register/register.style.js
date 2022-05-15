@@ -54,7 +54,7 @@ export const StyledLink = styled(Link)`
   padding-left: 0.25rem;
 `;
 
-export const BottomText = styled.p`
+export const CenteredP = styled.p`
   color: ${({ theme }) => theme.colors.grey};
   text-align: center;
 `;

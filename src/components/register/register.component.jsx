@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { registerInitiate } from "../../redux/user.action";
+
 import * as S from "./register.style";
+import AuthButton from "../auth-button";
+import { registerInitiate } from "../../redux/user.action";
 
 const Register = () => {
   const [state, setState] = useState({
@@ -43,6 +45,9 @@ const Register = () => {
   return (
     <S.Form onSubmit={handleSubmit}>
       <S.FormTitle>Register!</S.FormTitle>
+      <AuthButton type="Google" />
+      <AuthButton type="Facebook" />
+      <S.CenteredP>or</S.CenteredP>
       <S.Label>Name</S.Label>
       <S.Input
         type="text"
@@ -76,9 +81,9 @@ const Register = () => {
         required
       />
       <S.Submit type="submit">Register!</S.Submit>
-      <S.BottomText>
+      <S.CenteredP>
         Already have an account?<S.StyledLink to="/login">Log In</S.StyledLink>
-      </S.BottomText>
+      </S.CenteredP>
     </S.Form>
   );
 };
