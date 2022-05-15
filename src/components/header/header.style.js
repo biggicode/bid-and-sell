@@ -12,7 +12,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #f1f1f1;
+  /* border-bottom: 2px solid #f1f1f1; */
 `;
 
 export const Link = styled(RouterLink)`

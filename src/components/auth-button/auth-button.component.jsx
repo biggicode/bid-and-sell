@@ -19,7 +19,10 @@ const AuthButton = ({ type }) => {
   return (
     <S.Button onClick={type === "Google" ? handleGoogleSignIn : handleFBSignIn}>
       Continuati cu {type}
-      <i className={type === "Google" ? "icon__google" : "icon__facebook"} />
+      <i
+        className={type === "Google" ? "icon__google" : "icon__facebook"}
+        style={{ color: "#BB3FDD" }}
+      />
     </S.Button>
   );
 };

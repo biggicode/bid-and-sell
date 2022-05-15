@@ -64,7 +64,7 @@ const Register = () => {
         value={email}
         required
       />
-      <S.Label>Passowrd</S.Label>
+      <S.Label>Passoword</S.Label>
       <S.Input
         type="password"
         name="password"
