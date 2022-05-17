@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./login.style";
 import { loginInitiate } from "../../redux/user.action";
@@ -42,10 +42,10 @@ const Login = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <h2>Log In!</h2>
+      <S.FormTitle>Log In!</S.FormTitle>
       <AuthButton type="Google" />
       <AuthButton type="Facebook" />
-      <p>or</p>
+      <S.CenteredP>or</S.CenteredP>
       <S.Label>Email</S.Label>
       <S.Input
         type="email"
@@ -63,9 +63,10 @@ const Login = () => {
         required
       />
       <S.Submit type="submit">Log In</S.Submit>
-      <hr />
-      <p>Don't have an account</p>
-      <Link to="/register">Create new account</Link>
+      <S.CenteredP>
+        Don't have an account?
+        <S.StyledLink to="/register">Create new account</S.StyledLink>
+      </S.CenteredP>
     </S.Form>
   );
 };
