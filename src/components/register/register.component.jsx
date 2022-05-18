@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 import * as S from "./register.style";
 import AuthButton from "../auth-button";
+import CircleGradient from "../circle-gradient";
 import { registerInitiate } from "../../redux/user.action";
 
 const Register = () => {
@@ -43,48 +44,55 @@ const Register = () => {
   };
 
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <S.FormTitle>Register!</S.FormTitle>
-      <AuthButton type="Google" />
-      <AuthButton type="Facebook" />
-      <S.CenteredP>or</S.CenteredP>
-      <S.Label>Name</S.Label>
-      <S.Input
-        type="text"
-        name="displayName"
-        onChange={handleChange}
-        value={displayName}
-        required
-      />
-      <S.Label>Email</S.Label>
-      <S.Input
-        type="email"
-        name="email"
-        onChange={handleChange}
-        value={email}
-        required
-      />
-      <S.Label>Password</S.Label>
-      <S.Input
-        type="password"
-        name="password"
-        onChange={handleChange}
-        value={password}
-        required
-      />
-      <S.Label>Password Confirmation</S.Label>
-      <S.Input
-        type="password"
-        name="passwordConfirm"
-        onChange={handleChange}
-        value={passwordConfirm}
-        required
-      />
-      <S.Submit type="submit">Register!</S.Submit>
-      <S.CenteredP>
-        Already have an account?<S.StyledLink to="/login">Log In</S.StyledLink>
-      </S.CenteredP>
-    </S.Form>
+    <>
+      <CircleGradient top="0px" left="200px" />
+      <CircleGradient bottom="0px" right="20px" />
+      <CircleGradient top="200px" right="140px" type="black" />
+      <CircleGradient bottom="200px" left="140px" type="black" />
+      <S.Form onSubmit={handleSubmit}>
+        <S.FormTitle>Register!</S.FormTitle>
+        <AuthButton type="Google" />
+        <AuthButton type="Facebook" />
+        <S.CenteredP>or</S.CenteredP>
+        <S.Label>Name</S.Label>
+        <S.Input
+          type="text"
+          name="displayName"
+          onChange={handleChange}
+          value={displayName}
+          required
+        />
+        <S.Label>Email</S.Label>
+        <S.Input
+          type="email"
+          name="email"
+          onChange={handleChange}
+          value={email}
+          required
+        />
+        <S.Label>Password</S.Label>
+        <S.Input
+          type="password"
+          name="password"
+          onChange={handleChange}
+          value={password}
+          required
+        />
+        <S.Label>Password Confirmation</S.Label>
+        <S.Input
+          type="password"
+          name="passwordConfirm"
+          onChange={handleChange}
+          value={passwordConfirm}
+          required
+        />
+        <S.Submit type="submit">Register!</S.Submit>
+        <S.CenteredP>
+          Already have an account?
+          <S.StyledLink to="/login">Log In</S.StyledLink>
+        </S.CenteredP>
+      </S.Form>
+    </>
   );
 };
 
