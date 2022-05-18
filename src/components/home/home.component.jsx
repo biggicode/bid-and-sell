@@ -1,12 +1,18 @@
+import * as S from "./home.style";
 import CircleGradient from "../circle-gradient";
 
 const Home = () => {
   return (
-    <div>
-      This is home
+    <>
+      <S.Introduction>
+        <S.Title>Bid & Sell </S.Title>
+        <S.StyledP>Doar liciteaza si vinde.</S.StyledP>
+      </S.Introduction>
       <CircleGradient top="300px" type="black" />
+      <CircleGradient bottom="300px" right="50px" type="black" />
       <CircleGradient top="20px" right="50px" />
-    </div>
+      <CircleGradient bottom="100px" left="-20px" />
+    </>
   );
 };
 
