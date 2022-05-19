@@ -1,13 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Form = styled.form`
-  height: 500px;
-  border: 2px solid #333;
-  border-radius: 5px;
   grid-column: 1/-1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.25rem;
   padding: 1rem;
   margin: 1rem auto;
 
@@ -16,18 +14,41 @@ export const Form = styled.form`
   }
 `;
 
+export const FormTitle = styled.h2`
+  text-align: center;
+`;
+
 export const Label = styled.label`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const Input = styled.input`
-  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding-left: 1.25rem;
+  color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.primary};
+  height: 60px;
+  border-radius: 15px;
+  font-size: 1rem;
+  border: 3px solid #2f2f3c;
+
+  &:focus {
+    outline: none;
+    border: 3px solid #ff9f7c;
+  }
 `;
 
 export const Submit = styled.button`
-  margin: 1.5rem 0;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  height: 70px;
+  border-radius: 13px;
+  border: none;
+  background: linear-gradient(to left, #ff9f7c, #bb3fdd);
+  font-size: 1.25rem;
+  //Semi-bold
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 `;
 
 export const Button = styled.button`
@@ -36,4 +57,14 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.white};
+  padding-left: 0.25rem;
+`;
+
+export const CenteredP = styled.p`
+  color: ${({ theme }) => theme.colors.grey};
+  text-align: center;
 `;

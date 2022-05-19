@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import * as S from "./auction-card.style"
-import { storage } from "../../config/firebase"
-import { ref, getDownloadURL } from "firebase/storage"
+import * as S from "./auction-card.style";
+import { storage } from "../../config/firebase";
+import { ref, getDownloadURL } from "firebase/storage";
 
 const AuctionCard = ({
   auctionTitle,
@@ -11,18 +11,18 @@ const AuctionCard = ({
   imagePath,
   id,
 }) => {
-  const [imgUrl, setImageUrl] = useState("")
-  const pathReference = ref(storage, imagePath)
+  const [imgUrl, setImageUrl] = useState("");
+  const pathReference = ref(storage, imagePath);
 
   useEffect(() => {
     getDownloadURL(pathReference)
       .then((url) => {
-        setImageUrl(url)
+        setImageUrl(url);
       })
       .catch((error) => {
-        console.log("Can't get image card url", error)
-      })
-  }, [])
+        console.log("Can't get image card url", error);
+      });
+  }, []);
 
   return (
     <S.Card>
@@ -41,11 +41,11 @@ const AuctionCard = ({
           </S.Price>
         </S.PriceSection>
         <S.ButtonSection>
-          <S.Link to={`/auction/${id}`}>Place bid!</S.Link>
+          <S.Link to={`/auction/${id}`}>Place Bid!</S.Link>
         </S.ButtonSection>
       </S.CardBody>
     </S.Card>
-  )
-}
+  );
+};
 
-export default AuctionCard
+export default AuctionCard;
