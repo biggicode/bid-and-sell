@@ -102,12 +102,21 @@ const Sell = () => {
             required
           />
           <S.Label>Image</S.Label>
-          <S.Input
-            type="file"
-            onChange={handleFileChange}
-            accept="image/*"
-            required
-          />
+          <S.FileSection>
+            <S.FileLabel htmlFor="file">
+              <i className={imageUpload ? "icon__google" : "icon__facebook"} />
+            </S.FileLabel>
+            <S.InputFile
+              type="file"
+              id="file"
+              onChange={handleFileChange}
+              accept="image/*"
+              required
+            />
+            <S.FileText>
+              {imageUpload ? imageUpload.name : "Adauga o imagine"}
+            </S.FileText>
+          </S.FileSection>
           <S.Label htmlFor="description">Description</S.Label>
           <S.TextArea
             placeholder="Try to write something that you wish you will find if you read this"

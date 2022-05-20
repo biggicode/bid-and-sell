@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  background-color: red;
+  background-color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 4rem;
   display: flex;
   gap: 2rem;
@@ -34,6 +34,31 @@ export const SemiTitle = styled.h3`
 export const Label = styled.label`
   display: block;
 `;
+
+export const FileSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #bb3fdd;
+`;
+
+export const FileLabel = styled.label`
+  cursor: pointer;
+  border: 2px solid #bb3fdd;
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+`;
+
+export const InputFile = styled.input`
+  display: none;
+`;
+
+export const FileText = styled.p``;
 
 export const Input = styled.input`
   padding: 20px;
