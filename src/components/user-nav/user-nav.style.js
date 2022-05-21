@@ -13,6 +13,13 @@ export const DesktopUserNav = styled.div`
 export const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
+  border-bottom: 3px solid ${({ theme }) => theme.colors.border};
+  padding: 0.5rem 0;
+
+  &:hover {
+    color: #ff9f7c;
+    border-color: #ff9f7c;
+  }
 `;
 
 export const UserNavBody = styled.div`
@@ -22,12 +29,24 @@ export const UserNavBody = styled.div`
   gap: 0.5rem;
   padding: 0.5rem;
   position: absolute;
-  bottom: -100px;
+  bottom: -140px;
   right: 0px;
-  width: 130px;
+  width: 160px;
   background-color: ${({ theme }) => theme.colors.primaryDarker};
+  box-shadow: 0 3px 6px #000;
 `;
 
 export const Chevron = styled.i`
   ${({ open }) => (open ? "transform: rotate(180deg);" : "")}
+`;
+
+export const LogOutButton = styled.button`
+  padding: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #bb3fdd;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 6px #000;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  cursor: pointer;
 `;

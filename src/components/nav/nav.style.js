@@ -26,10 +26,25 @@ export const Link = styled(RouterLink)`
   padding: 1rem 0.5rem;
   color: ${({ theme }) => theme.colors.white};
   text-decoration: none;
+
+  &:hover {
+    color: #ff9f7c;
+  }
 `;
 
 export const ProfileDiv = styled.div`
   color: white;
   display: flex;
   gap: 0.25rem;
+`;
+
+export const LogOutButton = styled.button`
+  padding: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #bb3fdd;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 6px #000;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  cursor: pointer;
 `;

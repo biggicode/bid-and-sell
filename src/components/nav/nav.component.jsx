@@ -39,9 +39,9 @@ const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
             <S.Link to="/licitatiicastigate" onClick={handleNavLinkClick}>
               Licitatii castigate
             </S.Link>
-            <button onClick={handleLogOut} type="button">
-              LOG OUT
-            </button>
+            <S.LogOutButton onClick={handleLogOut} type="button">
+              Log Out <i className="icon__log-out" />
+            </S.LogOutButton>
           </>
         ) : (
           <>
