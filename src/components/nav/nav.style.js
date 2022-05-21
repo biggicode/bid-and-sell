@@ -6,6 +6,8 @@ export const Nav = styled.nav`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    border: 3px solid ${({ theme }) => theme.colors.border};
+    box-shadow: 0 3px 6px #000;
     flex-direction: column;
     position: fixed;
     transform: ${({ openNav }) =>

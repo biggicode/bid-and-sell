@@ -3,9 +3,9 @@ const colors = {
   danger: "#6AED12",
   warning: "#EDDF12",
   primary: "#1D1D26",
-  primaryDarker: "#3D0FBE",
+  primaryDarker: "#15151C",
   dark: "#090909",
-  border: "#707070",
+  border: "#2F2F3C",
   grey: "#C3C3C4",
 };
 
