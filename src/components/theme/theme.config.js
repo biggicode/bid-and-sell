@@ -1,5 +1,7 @@
 const colors = {
   white: "#FFF",
+  linearStart: "#ff9f7c",
+  linearEnd: "#bb3fdd",
   danger: "#6AED12",
   warning: "#EDDF12",
   primary: "#1D1D26",
