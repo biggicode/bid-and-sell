@@ -29,9 +29,9 @@ const UserNav = () => {
           <S.StyledLink to="/licitatiicastigate">
             Licitatii castigate
           </S.StyledLink>
-          <button onClick={handleLogOut}>
+          <S.LogOutButton onClick={handleLogOut}>
             Log Out <i className="icon__log-out" />
-          </button>
+          </S.LogOutButton>
         </S.UserNavBody>
       )}
     </S.DesktopUserNav>

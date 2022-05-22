@@ -1,77 +1,113 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Form = styled.form`
-  background-color: #cfdbd5;
-  padding: 2rem;
+  background-color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 4rem;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-direction: column;
   grid-column: 1/-1;
-`
+`;
+
+export const FormSection = styled.div`
+  background-color: #15151c;
+  border-radius: 2rem;
+  border: 3px solid #2f2f3c;
+  box-shadow: 0 3px 6px #000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
 
 export const Title = styled.h2`
+  text-shadow: 3px 6px #000;
   font-size: 3rem;
-`
+  grid-column: 1/-1;
+  text-align: center;
+`;
 
 export const SemiTitle = styled.h3`
   font-size: 2rem;
-`
+`;
 
 export const Label = styled.label`
   display: block;
-`
+`;
+
+export const FileSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #bb3fdd;
+`;
+
+export const FileLabel = styled.label`
+  cursor: pointer;
+  border: 2px solid #bb3fdd;
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+`;
+
+export const InputFile = styled.input`
+  display: none;
+`;
+
+export const FileText = styled.p``;
 
 export const Input = styled.input`
   padding: 20px;
-  border-color: transparent;
+  background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 5px;
-  width: 50%;
-`
+  border: 2px solid #2f2f3c;
+  color: #fff;
+
+  &:focus {
+    outline: 2px solid #ff9f7c;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 50%;
+  }
+`;
 
 export const TextArea = styled.textarea`
-  width: 50%;
   resize: none;
   height: 200px;
   padding: 10px;
-  border: none;
-`
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 5px;
+  border: 2px solid #2f2f3c;
+  color: #fff;
 
-export const Separator = styled.div`
-  height: 10px;
-  width: 100%;
-  background-color: white;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    background-color: white;
-    height: 10px;
-    width: 2rem;
-    right: -2rem;
+  &:focus {
+    outline: 2px solid #ff9f7c;
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    background-color: white;
-    height: 10px;
-    width: 2rem;
-    left: -2rem;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 50%;
   }
-`
+`;
 
 export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.danger};
-  color: ${({ theme }) => theme.colors.dark};
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to left, #ff9f7c, #bb3fdd);
+  color: ${({ theme }) => theme.colors.white};
   padding: 1rem 2rem;
   font-size: 1.5rem;
+  font-weight: 700;
   border: none;
   border-radius: 1.75rem;
-  width: 50%;
-  font-weight: 700;
-  box-shadow: 1px 2px 2px #000;
+
   transition: 250ms;
   cursor: pointer;
-`
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 50%;
+  }
+`;

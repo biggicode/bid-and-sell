@@ -104,7 +104,7 @@ const Auction = () => {
         <S.GreySection>
           Time remaining:{" "}
           <span>
-            {remainingTime.hours}ore {remainingTime.minutes}minute
+            {remainingTime.hours} ore {remainingTime.minutes}minute
           </span>
         </S.GreySection>
         <S.GreySection>
@@ -133,7 +133,7 @@ const Auction = () => {
         )}
       </S.RightSection>
       <S.Description>
-        <h3>Description</h3>
+        <S.DescriptionTitle>Description</S.DescriptionTitle>
         {auction?.description}
       </S.Description>
     </>
