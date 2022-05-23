@@ -4,21 +4,67 @@ export const Card = styled.div`
   grid-column: span 4;
   display: flex;
   flex-direction: column;
-  height: 500px;
   background-color: ${({ theme }) => theme.colors.primaryDarker};
   border: 3px solid ${({ theme }) => theme.colors.border};
   border-radius: 0.5rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 `;
 
+export const IconBadge = styled.div`
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  padding: 30px 1rem 18px 1rem;
+  background: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.linearStart},
+    ${({ theme }) => theme.colors.linearEnd}
+  );
+  box-shadow: 0 1px 2px #000;
+
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid ${({ theme }) => theme.colors.linearStart};
+    border-right: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    right: -9px;
+    /* z-index: 2; */
+  }
+`;
+
+export const IconUnderline = styled.div`
+  height: 3px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 93px;
+  background-color: ${({ theme, type }) =>
+    type === "live" ? "#FF0000" : theme.colors.linearEnd};
+`;
+
 export const CardHeader = styled.div`
-  padding: 5rem 1rem 1rem;
+  padding: 2rem 2rem 2rem 6rem;
   border-bottom: 3px solid ${({ theme }) => theme.colors.border};
+  text-overflow: ellipsis;
+  position: relative;
 `;
 
 export const CardBody = styled.div`
   padding: 0.75rem;
   flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+`;
+
+export const BodyTitle = styled.p`
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: ${({ theme }) => theme.colors.linearStart};
 `;
 
 export const CardFooter = styled.div`

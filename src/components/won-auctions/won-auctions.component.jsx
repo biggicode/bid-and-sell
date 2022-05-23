@@ -33,7 +33,12 @@ const WonAuctions = () => {
   return (
     <>
       {wonAuctions.map((auction) => (
-        <LiveTrophyCard key={auction.imagePath} />
+        <LiveTrophyCard
+          key={auction.imagePath}
+          title={auction.auctionTitle}
+          winnerEmail={auction.winnerEmail}
+          currentPrice={auction.currentPrice}
+        />
       ))}
     </>
   );
