@@ -1,6 +1,12 @@
+import { ref, deleteObject } from "firebase/storage";
+import { doc, deleteDoc } from "firebase/firestore";
+
 import * as S from "./live-trophy-card.style";
+import { storage, db } from "../../config/firebase";
 
 const LiveTrophyCard = ({
+  id,
+  imagePath,
   type,
   showDelete,
   title,
@@ -8,6 +14,18 @@ const LiveTrophyCard = ({
   creatorEmail,
   currentPrice,
 }) => {
+  const handleDelete = async () => {
+    const imageRef = ref(storage, imagePath);
+
+    deleteObject(imageRef)
+      .then(() => {})
+      .catch((error) => {
+        console.log("Imaginea nu a fost stearsa din storage", error);
+      });
+
+    await deleteDoc(doc(db, type === "live" ? "auctions" : "finished", id));
+  };
+
   return (
     <S.Card>
       <S.CardHeader>
@@ -35,7 +53,9 @@ const LiveTrophyCard = ({
             Send Mail
           </S.MailButton>
         )}
-        {showDelete && <S.DeleteButton>Delete</S.DeleteButton>}
+        {showDelete && (
+          <S.DeleteButton onClick={handleDelete}>Delete</S.DeleteButton>
+        )}
       </S.CardFooter>
     </S.Card>
   );
