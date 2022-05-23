@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 
 import { db } from "../../config/firebase";
+import LiveTrophyCard from "../live-trophy-card";
 
 //To do: make auction delete
 
@@ -44,7 +45,27 @@ const MyAuctions = () => {
   console.log("live auctions:", liveAuctions);
   console.log("finsihed auctions:", finishedAuctions);
 
-  return <div>my auctions</div>;
+  return (
+    <>
+      {liveAuctions.map((auction) => (
+        <LiveTrophyCard
+          type="live"
+          key={auction.imagePath}
+          title={auction.auctionTitle}
+          winnerEmail={auction.winnerEmail}
+          currentPrice={auction.currentPrice}
+        />
+      ))}
+      {finishedAuctions.map((auction) => (
+        <LiveTrophyCard
+          key={auction.imagePath}
+          title={auction.auctionTitle}
+          winnerEmail={auction.winnerEmail}
+          currentPrice={auction.currentPrice}
+        />
+      ))}
+    </>
+  );
 };
 
 export default MyAuctions;

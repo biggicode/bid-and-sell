@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   grid-column: span 4;
   display: flex;
+  height: 520px;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.primaryDarker};
   border: 3px solid ${({ theme }) => theme.colors.border};
@@ -17,8 +18,10 @@ export const IconBadge = styled.div`
   padding: 30px 1rem 18px 1rem;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.linearStart},
-    ${({ theme }) => theme.colors.linearEnd}
+    ${({ theme, type }) =>
+      type === "live" ? "#EF8893" : theme.colors.linearStart},
+    ${({ theme, type }) =>
+      type === "live" ? "#FF0000" : theme.colors.linearEnd}
   );
   box-shadow: 0 1px 2px #000;
 
@@ -48,8 +51,12 @@ export const IconUnderline = styled.div`
 export const CardHeader = styled.div`
   padding: 2rem 2rem 2rem 6rem;
   border-bottom: 3px solid ${({ theme }) => theme.colors.border};
-  text-overflow: ellipsis;
   position: relative;
+
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 `;
 
 export const CardBody = styled.div`
@@ -71,4 +78,20 @@ export const CardFooter = styled.div`
   display: flex;
   padding: 0.75rem;
   justify-content: space-between;
+`;
+
+export const DeleteButton = styled.div`
+  padding: 1rem;
+  font-weight: 700;
+  background-color: #a11f20;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+`;
+
+export const MailButton = styled.a`
+  text-decoration: none;
+  padding: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: ${({ theme }) => theme.colors.linearEnd};
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 `;

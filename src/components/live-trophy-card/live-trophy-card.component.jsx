@@ -4,8 +4,8 @@ const LiveTrophyCard = ({ type, title, winnerEmail, currentPrice }) => {
   return (
     <S.Card>
       <S.CardHeader>
-        {title}
-        <S.IconBadge>
+        <p>{title}</p>
+        <S.IconBadge type={type}>
           <i className="icon__facebook" />
           <S.IconUnderline type={type} />
         </S.IconBadge>
@@ -21,8 +21,10 @@ const LiveTrophyCard = ({ type, title, winnerEmail, currentPrice }) => {
         <p>{currentPrice}</p>
       </S.CardBody>
       <S.CardFooter>
-        <button>Contact</button>
-        <button>Delete</button>
+        {type === "live" || (
+          <S.MailButton href={`mailto:${winnerEmail}`}>Send Mail</S.MailButton>
+        )}
+        <S.DeleteButton>Delete</S.DeleteButton>
       </S.CardFooter>
     </S.Card>
   );
