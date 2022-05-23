@@ -35,7 +35,6 @@ const Sell = () => {
     startingPrice,
     auctionDuration,
     creatorName,
-    // creatorEmail,
     phoneNumber,
   } = state;
 
