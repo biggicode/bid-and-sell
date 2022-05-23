@@ -1,6 +1,13 @@
 import * as S from "./live-trophy-card.style";
 
-const LiveTrophyCard = ({ type, title, winnerEmail, currentPrice }) => {
+const LiveTrophyCard = ({
+  type,
+  showDelete,
+  title,
+  winnerEmail,
+  creatorEmail,
+  currentPrice,
+}) => {
   return (
     <S.Card>
       <S.CardHeader>
@@ -22,9 +29,13 @@ const LiveTrophyCard = ({ type, title, winnerEmail, currentPrice }) => {
       </S.CardBody>
       <S.CardFooter>
         {type === "live" || (
-          <S.MailButton href={`mailto:${winnerEmail}`}>Send Mail</S.MailButton>
+          <S.MailButton
+            href={`mailto:${showDelete ? winnerEmail : creatorEmail}`}
+          >
+            Send Mail
+          </S.MailButton>
         )}
-        <S.DeleteButton>Delete</S.DeleteButton>
+        {showDelete && <S.DeleteButton>Delete</S.DeleteButton>}
       </S.CardFooter>
     </S.Card>
   );

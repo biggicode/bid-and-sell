@@ -5,7 +5,7 @@ import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import LiveTrophyCard from "../live-trophy-card";
 
-//To do: make auction delete
+//To do: make auction delete and refresh
 
 const MyAuctions = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
@@ -54,6 +54,7 @@ const MyAuctions = () => {
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
           currentPrice={auction.currentPrice}
+          showDelete={true}
         />
       ))}
       {finishedAuctions.map((auction) => (
@@ -62,6 +63,7 @@ const MyAuctions = () => {
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
           currentPrice={auction.currentPrice}
+          showDelete={true}
         />
       ))}
     </>

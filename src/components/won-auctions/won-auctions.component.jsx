@@ -38,6 +38,7 @@ const WonAuctions = () => {
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
           currentPrice={auction.currentPrice}
+          creatorEmail={auction.creatorEmail}
         />
       ))}
     </>

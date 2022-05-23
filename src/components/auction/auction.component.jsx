@@ -79,6 +79,7 @@ const Auction = () => {
       currentPrice: Math.trunc(auction.currentPrice * 1.1),
       winnerEmail: currentUser.email,
       winnerId: currentUser.uid,
+      winnerName: currentUser.displayName,
     });
   };
 
@@ -91,6 +92,7 @@ const Auction = () => {
       currentPrice: bidAmount,
       winnerEmail: currentUser.email,
       winnerId: currentUser.uid,
+      winnerName: currentUser.displayName,
     });
   };
 
