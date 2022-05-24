@@ -26,7 +26,7 @@ const MyAuctions = () => {
     onSnapshot(liveQ, (querySnapshot) => {
       const list = [];
       querySnapshot.forEach((doc) => {
-        list.push(doc.data());
+        list.push({ id: doc.id, ...doc.data() });
       });
 
       setLiveAuctions(list);
@@ -35,7 +35,7 @@ const MyAuctions = () => {
     onSnapshot(finishedQ, (querySnapshot) => {
       const list = [];
       querySnapshot.forEach((doc) => {
-        list.push(doc.data());
+        list.push({ id: doc.id, ...doc.data() });
       });
 
       setFinishedAuctions(list);
@@ -50,19 +50,25 @@ const MyAuctions = () => {
       {liveAuctions.map((auction) => (
         <LiveTrophyCard
           type="live"
-          key={auction.imagePath}
+          key={auction.id}
+          id={auction.id}
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
+          winnerName={auction.winnerName}
           currentPrice={auction.currentPrice}
+          imagePath={auction.imagePath}
           showDelete={true}
         />
       ))}
       {finishedAuctions.map((auction) => (
         <LiveTrophyCard
-          key={auction.imagePath}
+          key={auction.id}
+          id={auction.id}
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
+          winnerName={auction.winnerName}
           currentPrice={auction.currentPrice}
+          imagePath={auction.imagePath}
           showDelete={true}
         />
       ))}
