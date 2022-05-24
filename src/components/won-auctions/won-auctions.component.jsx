@@ -36,9 +36,9 @@ const WonAuctions = () => {
         <LiveTrophyCard
           key={auction.imagePath}
           title={auction.auctionTitle}
-          winnerEmail={auction.winnerEmail}
           currentPrice={auction.currentPrice}
           creatorEmail={auction.creatorEmail}
+          creatorName={auction.creatorName}
         />
       ))}
     </>

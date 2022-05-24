@@ -54,6 +54,7 @@ const MyAuctions = () => {
           id={auction.id}
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
+          winnerName={auction.winnerName}
           currentPrice={auction.currentPrice}
           imagePath={auction.imagePath}
           showDelete={true}
@@ -65,6 +66,7 @@ const MyAuctions = () => {
           id={auction.id}
           title={auction.auctionTitle}
           winnerEmail={auction.winnerEmail}
+          winnerName={auction.winnerName}
           currentPrice={auction.currentPrice}
           imagePath={auction.imagePath}
           showDelete={true}
