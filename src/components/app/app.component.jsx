@@ -16,6 +16,7 @@ import Grid from "../grid-system/grid";
 import Footer from "../footer";
 import MyAuctions from "../my-auctions";
 import WonAuctions from "../won-auctions";
+import RedirectPage from "../redirect-page";
 import { setUser } from "../../redux/user.action";
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/licitatilemele" element={<MyAuctions />} />
             <Route path="/licitatiicastigate" element={<WonAuctions />} />
+            <Route path="/redirectioneaza" element={<RedirectPage />} />
           </Routes>
         </Grid>
         <Footer />
