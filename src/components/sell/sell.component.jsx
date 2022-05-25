@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, storage } from "../../config/firebase";
 import * as S from "./sell.style";
 import { collection, addDoc } from "firebase/firestore";
@@ -29,6 +29,12 @@ const Sell = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!currentUser) {
+      return navigate("/redirectioneaza");
+    }
+  }, [currentUser]);
+
   const {
     auctionTitle,
     description,
@@ -47,8 +53,6 @@ const Sell = () => {
   const handleFileChange = (e) => {
     setImageUpload(e.target.files[0]);
   };
-
-  const uploadImage = () => {};
 
   const resetForm = () => {
     setState(initialValues);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 import { db } from "../../config/firebase";
 import LiveTrophyCard from "../live-trophy-card";
@@ -10,9 +11,10 @@ import LiveTrophyCard from "../live-trophy-card";
 const WonAuctions = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [wonAuctions, setWonAuctions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!currentUser) return;
+    if (!currentUser) return navigate("/redirectioneaza");
     const q = query(
       collection(db, "finished"),
       where("winnerId", "==", currentUser.uid)
