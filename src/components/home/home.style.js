@@ -15,7 +15,19 @@ export const StyledP = styled.p`
 `;
 
 export const Title = styled.h2`
-  color: #fff;
-  text-align: center;
   font-size: 3rem;
+  background: -webkit-linear-gradient(
+    ${({ theme }) => theme.colors.linearStart},
+    ${({ theme }) => theme.colors.linearEnd}
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+export const SemiTitle = styled.p`
+  font-size: 2rem;
+  grid-column: 1/-1;
+  padding: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px #000;
 `;

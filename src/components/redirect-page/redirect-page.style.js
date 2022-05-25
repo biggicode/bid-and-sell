@@ -13,9 +13,11 @@ export const Container = styled.div`
 export const ContainerTitle = styled.p`
   font-size: 2rem;
   text-shadow: 2px 2px #000;
+  text-align: center;
   color: ${({ theme }) => theme.colors.linearStart};
 `;
 
 export const ContainerSubtitle = styled.p`
   font-size: 1rem;
+  text-align: center;
 `;
