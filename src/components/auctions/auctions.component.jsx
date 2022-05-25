@@ -11,6 +11,7 @@ import { db } from "../../config/firebase";
 import Row from "../grid-system/row";
 import Grid from "../grid-system/grid";
 import AuctionCard from "../auction-card";
+import * as S from "./auctions.style";
 
 //TO DO: display a message when is no auctions
 
@@ -41,7 +42,16 @@ const Auctions = () => {
   }, []);
 
   //TO DO: protect auction id with usefull 1:42
-  return (
+  return auctionsList.length === 0 ? (
+    <S.Container>
+      <S.ContainerTitle>
+        In acest moment nu este nicio licitatie in desfasurere.
+      </S.ContainerTitle>
+      <S.ContainerSubtitle>
+        <S.StyledLink to="/sell">Creati</S.StyledLink> o licitatie.
+      </S.ContainerSubtitle>
+    </S.Container>
+  ) : (
     <Row>
       <Grid fullHeight={false} addPadding={false}>
         {auctionsList.map((auction) => {

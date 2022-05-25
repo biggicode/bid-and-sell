@@ -22,7 +22,6 @@ const initialValues = {
 //TO DO: adauga iconita corecta la input file
 
 const Sell = () => {
-  //TO DO: Check if user is logged in
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [state, setState] = useState(initialValues);
   const [imageUpload, setImageUpload] = useState(null);
