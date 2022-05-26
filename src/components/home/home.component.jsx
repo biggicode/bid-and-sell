@@ -16,9 +16,10 @@ const Home = () => {
         <S.Step>
           <S.Circle>1</S.Circle>
           <S.StepText>
-            Inregistreaza-te accesand butonul de inregistrare! Daca ai deja un
-            cont existent apasa butonul de Log In. Aceste butoane le gasiti in
-            partea dreapta sus a paginii.
+            Este necesar se detineti un cont pentru a participa la o licitatie
+            implicit pentru a crea una. Inregistreaza-te accesand butonul de
+            inregistrare! Daca ai deja un cont existent apasa butonul de Log In.
+            Aceste butoane le gasiti in partea dreapta sus a paginii.
           </S.StepText>
         </S.Step>
         <S.Step>
