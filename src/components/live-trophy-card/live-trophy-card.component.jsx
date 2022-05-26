@@ -33,7 +33,7 @@ const LiveTrophyCard = ({
       <S.CardHeader>
         <p>{title}</p>
         <S.IconBadge type={type}>
-          <i className="icon__facebook" />
+          <i className={type === "live" ? "icon__feed" : "icon__trophy"} />
           <S.IconUnderline type={type} />
         </S.IconBadge>
       </S.CardHeader>
