@@ -106,7 +106,7 @@ const Sell = () => {
           <S.Label>Image</S.Label>
           <S.FileSection>
             <S.FileLabel htmlFor="file">
-              <i className={imageUpload ? "icon__google" : "icon__facebook"} />
+              <i className={imageUpload ? "icon__image" : "icon__plus"} />
             </S.FileLabel>
             <S.InputFile
               type="file"

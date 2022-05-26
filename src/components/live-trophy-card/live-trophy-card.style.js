@@ -12,6 +12,8 @@ export const Card = styled.div`
 `;
 
 export const IconBadge = styled.div`
+  color: ${({ theme }) => theme.colors.primaryDarker};
+  font-size: 1.5rem;
   position: absolute;
   top: -10px;
   left: 30px;
