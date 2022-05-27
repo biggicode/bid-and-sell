@@ -20,6 +20,7 @@ const initialValues = {
 
 //TO DO: go to read and write settings and allow only register users in firebase (if true)
 //TO DO: adauga iconita corecta la input file
+//TO DO: text overflow la titlul licitatiei,descriere samd
 
 const Sell = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
@@ -89,21 +90,21 @@ const Sell = () => {
 
   return (
     <>
-      <S.Title>Sell an object</S.Title>
+      <S.Title>Vinde un obiect</S.Title>
       <S.Form onSubmit={handleSubmit}>
         <S.FormSection>
-          <S.SemiTitle>Object details</S.SemiTitle>
-          <S.Label htmlFor="auctionTitle">Auction Title</S.Label>
+          <S.SemiTitle>Detalii despre obiect</S.SemiTitle>
+          <S.Label htmlFor="auctionTitle">Titlul licitatiei</S.Label>
           <S.Input
             type="text"
-            placeholder="Ex.: A big white bicycle with 2 rims"
+            placeholder="Ex.: Bicicleta Pegasus din anul 1974"
             name="auctionTitle"
             id="auctionTitle"
             value={auctionTitle}
             onChange={handleInputChange}
             required
           />
-          <S.Label>Image</S.Label>
+          <S.Label>Fotografie</S.Label>
           <S.FileSection>
             <S.FileLabel htmlFor="file">
               <i className={imageUpload ? "icon__image" : "icon__plus"} />
@@ -116,19 +117,19 @@ const Sell = () => {
               required
             />
             <S.FileText>
-              {imageUpload ? imageUpload.name : "Adauga o imagine"}
+              {imageUpload ? imageUpload.name : "Adauga o fotografie"}
             </S.FileText>
           </S.FileSection>
-          <S.Label htmlFor="description">Description</S.Label>
+          <S.Label htmlFor="description">Descriere</S.Label>
           <S.TextArea
-            placeholder="Try to write something that you wish you will find if you read this"
+            placeholder="Incearca sa scrii destule informatii referitoare la produs."
             name="description"
             id="description"
             value={description}
             onChange={handleInputChange}
             required
           ></S.TextArea>
-          <S.Label htmlFor="startingPrice">Starting Price</S.Label>
+          <S.Label htmlFor="startingPrice">Pret de pornire</S.Label>
           <S.Input
             type="number"
             name="startingPrice"
@@ -137,9 +138,7 @@ const Sell = () => {
             onChange={handleInputChange}
             required
           />
-          <S.Label htmlFor="auctionDuration">
-            Auction duration in hours:
-          </S.Label>
+          <S.Label htmlFor="auctionDuration">Durata licitatiei in ore</S.Label>
           <S.Input
             type="number"
             name="auctionDuration"
@@ -153,8 +152,8 @@ const Sell = () => {
           />
         </S.FormSection>
         <S.FormSection>
-          <S.SemiTitle>Contact info</S.SemiTitle>
-          <S.Label htmlFor="creatorName">Your name</S.Label>
+          <S.SemiTitle>Informatii de contact</S.SemiTitle>
+          <S.Label htmlFor="creatorName">Nume</S.Label>
           <S.Input
             type="text"
             name="creatorName"
@@ -163,7 +162,7 @@ const Sell = () => {
             onChange={handleInputChange}
             required
           />
-          <S.Label htmlFor="creatorEmail">E-mail address</S.Label>
+          <S.Label htmlFor="creatorEmail">Adresa de email</S.Label>
           <S.Input
             type="mail"
             name="creatorEmail"
@@ -173,7 +172,7 @@ const Sell = () => {
             readOnly
             required
           />
-          <S.Label htmlFor="phoneNumber">Phone number</S.Label>
+          <S.Label htmlFor="phoneNumber">Numar de telefon</S.Label>
           <S.Input
             type="tell"
             name="phoneNumber"
@@ -184,7 +183,7 @@ const Sell = () => {
           />
         </S.FormSection>
         <S.FormSection>
-          <S.Button type="submit">Create auction!</S.Button>
+          <S.Button type="submit">Creati licitatia!</S.Button>
         </S.FormSection>
       </S.Form>
     </>

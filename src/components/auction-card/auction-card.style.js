@@ -63,6 +63,7 @@ export const AuctionTitle = styled.p`
 
 export const Link = styled(RouterLink)`
   padding: 0.75rem 2rem;
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.white};
   text-decoration: none;
   font-size: 1.25rem;

@@ -48,7 +48,7 @@ const Login = () => {
       <CircleGradient top="100px" left="200px" type="black" />
       <CircleGradient bottom="300px" right="20px" type="black" />
       <S.Form onSubmit={handleSubmit}>
-        <S.FormTitle>Log In!</S.FormTitle>
+        <S.FormTitle>Logheza-te!</S.FormTitle>
         <AuthButton type="Google" />
         <AuthButton type="Facebook" />
         <S.CenteredP>or</S.CenteredP>
@@ -60,7 +60,7 @@ const Login = () => {
           value={email}
           required
         />
-        <S.Label>Password</S.Label>
+        <S.Label>Parola</S.Label>
         <S.Input
           type="password"
           name="password"
@@ -70,8 +70,8 @@ const Login = () => {
         />
         <S.Submit type="submit">Log In</S.Submit>
         <S.CenteredP>
-          Don't have an account?
-          <S.StyledLink to="/register">Create new account</S.StyledLink>
+          Nu ai un cont?
+          <S.StyledLink to="/register">Creeaza un cont nou</S.StyledLink>
         </S.CenteredP>
       </S.Form>
     </>

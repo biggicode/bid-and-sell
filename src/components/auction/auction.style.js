@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const AuctionTitle = styled.h2`
   grid-column: 1/-1;
@@ -128,4 +129,8 @@ export const RightSection = styled.div`
     grid-column: 9 / span 4;
     grid-row: 1 / span 2;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.linearStart};
 `;

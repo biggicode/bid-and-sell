@@ -47,10 +47,10 @@ const Header = () => {
         ) : (
           <div>
             <S.Link to="/login" onClick={handleNavLinkClick}>
-              Log in
+              Autentificare
             </S.Link>
             <S.Link type="register" to="/register" onClick={handleNavLinkClick}>
-              Register
+              Inregistrare
             </S.Link>
           </div>
         ))}

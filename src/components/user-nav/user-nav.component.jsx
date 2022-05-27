@@ -30,7 +30,7 @@ const UserNav = () => {
             Licitatii castigate
           </S.StyledLink>
           <S.LogOutButton onClick={handleLogOut}>
-            Log Out <i className="icon__log-out" />
+            Deconectare <i className="icon__log-out" />
           </S.LogOutButton>
         </S.UserNavBody>
       )}
