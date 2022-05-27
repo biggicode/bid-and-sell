@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, storage } from "../../config/firebase";
 import * as S from "./sell.style";
 import { collection, addDoc } from "firebase/firestore";
@@ -22,12 +22,17 @@ const initialValues = {
 //TO DO: adauga iconita corecta la input file
 
 const Sell = () => {
-  //TO DO: Check if user is logged in
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [state, setState] = useState(initialValues);
   const [imageUpload, setImageUpload] = useState(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      return navigate("/redirectioneaza");
+    }
+  }, [currentUser]);
 
   const {
     auctionTitle,
@@ -47,8 +52,6 @@ const Sell = () => {
   const handleFileChange = (e) => {
     setImageUpload(e.target.files[0]);
   };
-
-  const uploadImage = () => {};
 
   const resetForm = () => {
     setState(initialValues);
@@ -103,7 +106,7 @@ const Sell = () => {
           <S.Label>Image</S.Label>
           <S.FileSection>
             <S.FileLabel htmlFor="file">
-              <i className={imageUpload ? "icon__google" : "icon__facebook"} />
+              <i className={imageUpload ? "icon__image" : "icon__plus"} />
             </S.FileLabel>
             <S.InputFile
               type="file"

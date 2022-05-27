@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 import { db } from "../../config/firebase";
 import LiveTrophyCard from "../live-trophy-card";
@@ -11,8 +12,10 @@ const MyAuctions = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [liveAuctions, setLiveAuctions] = useState([]);
   const [finishedAuctions, setFinishedAuctions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!currentUser) return navigate("/redirectioneaza");
     const liveQ = query(
       collection(db, "auctions"),
       where("creatorId", "==", currentUser.uid)
@@ -40,7 +43,7 @@ const MyAuctions = () => {
 
       setFinishedAuctions(list);
     });
-  }, []);
+  }, [currentUser]);
 
   console.log("live auctions:", liveAuctions);
   console.log("finsihed auctions:", finishedAuctions);

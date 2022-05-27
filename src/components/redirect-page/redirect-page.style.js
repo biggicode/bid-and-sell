@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   height: 75vh;
@@ -21,9 +20,4 @@ export const ContainerTitle = styled.p`
 export const ContainerSubtitle = styled.p`
   font-size: 1rem;
   text-align: center;
-`;
-
-export const StyledLink = styled(Link)`
-  font-weight: 600;
-  color: #fff;
 `;

@@ -33,7 +33,7 @@ const LiveTrophyCard = ({
       <S.CardHeader>
         <p>{title}</p>
         <S.IconBadge type={type}>
-          <i className="icon__facebook" />
+          <i className={type === "live" ? "icon__feed" : "icon__trophy"} />
           <S.IconUnderline type={type} />
         </S.IconBadge>
       </S.CardHeader>
@@ -48,8 +48,6 @@ const LiveTrophyCard = ({
             : "Adresa de email a proprietarului"}
         </S.BodyTitle>
         <p>{showDelete ? winnerEmail : creatorEmail}</p>
-        {/* <S.BodyTitle>Winner Phone</S.BodyTitle>
-        <p>-</p> */}
         <S.BodyTitle>
           {type === "live" ? "Oferta curenta" : "Oferta castigatoare"}
         </S.BodyTitle>
