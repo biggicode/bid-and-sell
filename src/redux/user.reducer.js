@@ -1,10 +1,10 @@
-import * as constant from "./user.constant"
+import * as constant from "./user.constant";
 
 const initialState = {
   loading: false,
   currentUser: null,
   error: null,
-}
+};
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,19 +16,19 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-      }
+      };
     case constant.SET_USER:
       return {
         ...state,
         loading: false,
         currentUser: action.payload,
-      }
+      };
     case constant.LOGOUT_SUCCES:
       return {
         ...state,
         currentUser: null,
         loading: false,
-      }
+      };
     case constant.LOGIN_SUCCES:
     case constant.REGISTER_SUCCES:
     case constant.GOOGLE_LOGIN_SUCCES:
@@ -37,7 +37,8 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         currentUser: action.payload,
-      }
+        error: null,
+      };
     case constant.LOGIN_FAIL:
     case constant.LOGOUT_FAIL:
     case constant.REGISTER_FAIL:
@@ -47,9 +48,9 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
-      }
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};

@@ -15,7 +15,7 @@ const Login = () => {
 
   const { email, password } = state;
 
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, error } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -68,6 +68,15 @@ const Login = () => {
           value={password}
           required
         />
+        {error && (
+          <S.Error>
+            {error.includes("user-not-found")
+              ? "Nu a fost gasit un utilizator cu acest email."
+              : error.includes("wrong-password")
+              ? "Parola este gresita."
+              : error}
+          </S.Error>
+        )}
         <S.Submit type="submit">Log In</S.Submit>
         <S.CenteredP>
           Nu ai un cont?
