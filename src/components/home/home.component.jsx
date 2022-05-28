@@ -18,8 +18,9 @@ const Home = () => {
           <S.StepText>
             Este necesar se detineti un cont pentru a participa la o licitatie
             implicit pentru a crea una. Inregistreaza-te accesand butonul de
-            inregistrare! Daca ai deja un cont existent apasa butonul de Log In.
-            Aceste butoane le gasiti in partea dreapta sus a paginii.
+            Inregistrare! Daca ai deja un cont existent apasa butonul de
+            Autentificare. Aceste butoane le gasiti in partea dreapta sus a
+            paginii.
           </S.StepText>
         </S.Step>
         <S.Step>
@@ -34,9 +35,9 @@ const Home = () => {
           <S.Circle>3</S.Circle>
           <S.StepText>
             Licitatiile create de catre tine le poti gasi apasand pe linkul
-            "Licitatiile mele". Acolo poti contacta castigatorul prin
-            intermediul adresei de email. Daca ati participat la o licitatie si
-            sunteti castigator puteti contacta proprietarul accesand sectiunea
+            "Licitatile mele". Acolo poti contacta castigatorul prin intermediul
+            adresei de email. Daca ati participat la o licitatie si sunteti
+            castigator puteti contacta proprietarul accesand sectiunea
             "Licitatii castigate" unde veti gasi emailul acestuia.
           </S.StepText>
         </S.Step>

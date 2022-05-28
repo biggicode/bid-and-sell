@@ -17,7 +17,6 @@ import * as S from "./auction.style";
 import { GetAuctionTime } from "../../utils/auction-time";
 //TO DO: validate image type
 //TO DO: go into firebase console and update read/write
-//To do: nu lasa userul sa isi faca bid la propria oferta
 
 const Auction = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
@@ -104,38 +103,50 @@ const Auction = () => {
       <S.Img src={imageUrl} />
       <S.RightSection>
         <S.GreySection>
-          Time remaining:{" "}
+          Timp ramas:{" "}
           <span>
             {remainingTime.hours} ore {remainingTime.minutes}minute
           </span>
         </S.GreySection>
         <S.GreySection>
-          Current Price: <span>{auction?.currentPrice}$</span>
+          Pretul curent: <span>{auction?.currentPrice}LEI</span>
         </S.GreySection>
+        {currentUser?.uid === auction?.winnerId && (
+          <S.GreySection>
+            Dumneavoastra sunteti actualul castigator!
+          </S.GreySection>
+        )}
         {currentUser ? (
-          <>
-            <S.BidForm onSubmit={handleAmountSubmit}>
-              <S.FormTitle>Place amount</S.FormTitle>
-              <S.InputBidForm
-                type="number"
-                min={auction?.currentPrice}
-                value={bidAmount}
-                onChange={(e) => setBidAmount(e.target.value)}
-              />
-              <S.SubmitBidForm>Submit my bid amount</S.SubmitBidForm>
-            </S.BidForm>
-            <S.Button onClick={placeTenPercent}>Place bid! + 10%</S.Button>
-          </>
+          currentUser.uid === auction?.creatorId ? (
+            <p>
+              Nu puteti licita la propria licitatie. Puteti vedea actualul
+              castigator in sectiunea "Licitatile mele".
+            </p>
+          ) : (
+            <>
+              <S.BidForm onSubmit={handleAmountSubmit}>
+                <S.FormTitle>Plasati o suma:</S.FormTitle>
+                <S.InputBidForm
+                  type="number"
+                  min={auction?.currentPrice}
+                  value={bidAmount}
+                  onChange={(e) => setBidAmount(e.target.value)}
+                />
+                <S.SubmitBidForm>Plasati suma</S.SubmitBidForm>
+              </S.BidForm>
+              <S.Button onClick={placeTenPercent}>Plasati 10%</S.Button>
+            </>
+          )
         ) : (
           <div>
-            In order to participate on this auction you have to{" "}
-            <Link to="/register">register</Link> or{" "}
-            <Link to="/login">log in!</Link>
+            Pentru a putea participa la aceasta licitatie trebuie sa te{" "}
+            <S.StyledLink to="/register">inregistrezi</S.StyledLink> sau sa te{" "}
+            <S.StyledLink to="/login">autentifici!</S.StyledLink>
           </div>
         )}
       </S.RightSection>
       <S.Description>
-        <S.DescriptionTitle>Description</S.DescriptionTitle>
+        <S.DescriptionTitle>Descriere</S.DescriptionTitle>
         {auction?.description}
       </S.Description>
     </>

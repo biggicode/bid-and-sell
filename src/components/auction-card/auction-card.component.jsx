@@ -43,16 +43,16 @@ const AuctionCard = ({
         <S.AuctionTitle>{auctionTitle}</S.AuctionTitle>
         <S.PriceSection>
           <S.Price>
-            <p>Starting Price</p>
-            <p>$ {startingPrice}</p>
+            <p>Pret de pornire</p>
+            <p>{startingPrice}LEI</p>
           </S.Price>
           <S.Price>
-            <p>Current Price</p>
-            <p>$ {currentPrice}</p>
+            <p>Pretul curent</p>
+            <p>{currentPrice}LEI</p>
           </S.Price>
         </S.PriceSection>
         <S.ButtonSection>
-          <S.Link to={`/auction/${id}`}>Place Bid!</S.Link>
+          <S.Link to={`/auction/${id}`}>Liciteaza!</S.Link>
         </S.ButtonSection>
       </S.CardBody>
     </S.Card>

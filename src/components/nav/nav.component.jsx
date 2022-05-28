@@ -16,13 +16,13 @@ const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
   return (
     <S.Nav openNav={openNav}>
       <S.Link to="/" onClick={handleNavLinkClick}>
-        Home
+        Acasa
       </S.Link>
       <S.Link to="/auctions" onClick={handleNavLinkClick}>
-        Auctions
+        Licitatii
       </S.Link>
       <S.Link to="/sell" onClick={handleNavLinkClick}>
-        Sell
+        Vinde
       </S.Link>
       {isMobile &&
         (currentUser ? (
@@ -40,16 +40,16 @@ const Nav = ({ openNav, handleNavLinkClick, isMobile }) => {
               Licitatii castigate
             </S.Link>
             <S.LogOutButton onClick={handleLogOut} type="button">
-              Log Out <i className="icon__log-out" />
+              Deconectare <i className="icon__log-out" />
             </S.LogOutButton>
           </>
         ) : (
           <>
             <S.Link to="/login" onClick={handleNavLinkClick}>
-              LOGIN
+              Autentificare
             </S.Link>
             <S.Link to="/register" onClick={handleNavLinkClick}>
-              REGISTER
+              Inregistrare
             </S.Link>
           </>
         ))}

@@ -50,11 +50,11 @@ const Register = () => {
       <CircleGradient top="200px" right="140px" type="black" />
       <CircleGradient bottom="200px" left="140px" type="black" />
       <S.Form onSubmit={handleSubmit}>
-        <S.FormTitle>Register!</S.FormTitle>
+        <S.FormTitle>Formular Inregistrare!</S.FormTitle>
         <AuthButton type="Google" />
         <AuthButton type="Facebook" />
         <S.CenteredP>or</S.CenteredP>
-        <S.Label>Name</S.Label>
+        <S.Label>Nume</S.Label>
         <S.Input
           type="text"
           name="displayName"
@@ -70,7 +70,7 @@ const Register = () => {
           value={email}
           required
         />
-        <S.Label>Password</S.Label>
+        <S.Label>Parola</S.Label>
         <S.Input
           type="password"
           name="password"
@@ -78,7 +78,7 @@ const Register = () => {
           value={password}
           required
         />
-        <S.Label>Password Confirmation</S.Label>
+        <S.Label>Confirma Parola</S.Label>
         <S.Input
           type="password"
           name="passwordConfirm"
@@ -86,10 +86,10 @@ const Register = () => {
           value={passwordConfirm}
           required
         />
-        <S.Submit type="submit">Register!</S.Submit>
+        <S.Submit type="submit">Inregistrare!</S.Submit>
         <S.CenteredP>
-          Already have an account?
-          <S.StyledLink to="/login">Log In</S.StyledLink>
+          Ai deja un cont?
+          <S.StyledLink to="/login">Autentificare</S.StyledLink>
         </S.CenteredP>
       </S.Form>
     </>
