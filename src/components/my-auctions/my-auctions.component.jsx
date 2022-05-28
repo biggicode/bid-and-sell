@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../../config/firebase";
 import LiveTrophyCard from "../live-trophy-card";
 
-//To do: make auction delete and refresh
-
 const MyAuctions = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [liveAuctions, setLiveAuctions] = useState([]);
