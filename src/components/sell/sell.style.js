@@ -55,7 +55,9 @@ export const FileLabel = styled.label`
 `;
 
 export const InputFile = styled.input`
-  display: none;
+  /* display: none; */
+  width: 1px;
+  height: 1px;
 `;
 
 export const FileText = styled.p``;

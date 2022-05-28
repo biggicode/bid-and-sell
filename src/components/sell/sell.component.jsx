@@ -112,6 +112,7 @@ const Sell = () => {
             <S.InputFile
               type="file"
               id="file"
+              name="file"
               onChange={handleFileChange}
               accept="image/*"
               required
