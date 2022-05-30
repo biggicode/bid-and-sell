@@ -39,6 +39,7 @@ const App = () => {
         <div style={{ height: "65px" }}></div>
         <Grid fullHeight={true} addPadding={true}>
           <Routes>
+            <Route path="*" element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/auctions" element={<Auctions />} />
             <Route path="/sell" element={<Sell />} />

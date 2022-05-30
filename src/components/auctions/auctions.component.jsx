@@ -39,7 +39,7 @@ const Auctions = () => {
     });
   }, []);
 
-  //TO DO: protect auction id with usefull 1:42
+  //to do: update clockdown to 1 sec
   return auctionsList.length === 0 ? (
     <S.Container>
       <S.ContainerTitle>
