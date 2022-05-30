@@ -33,8 +33,6 @@ const Auction = () => {
 
       if (!fetchedDoc) navigate("/");
 
-      console.log("Document fetched", fetchedDoc);
-      console.log("auctionRef", auctionRef);
       setAuction(fetchedDoc);
       // setBidAmount()
     });
@@ -49,7 +47,7 @@ const Auction = () => {
 
   useEffect(() => {
     let now = new Date();
-    console.log("time checked");
+    // console.log("time checked");
     if (auction && Number(auction.dueDate) < now.getTime()) {
       const moveDocument = async () => {
         await setDoc(doc(db, "finished", id), auction);
@@ -94,8 +92,6 @@ const Auction = () => {
       winnerName: currentUser.displayName,
     });
   };
-
-  console.log(auction);
 
   return (
     <>

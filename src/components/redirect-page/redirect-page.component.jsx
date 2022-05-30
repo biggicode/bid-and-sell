@@ -18,7 +18,6 @@ const RedirectPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds(seconds - 1);
-      console.log("executat");
     }, 1000);
 
     return () => clearInterval(interval);

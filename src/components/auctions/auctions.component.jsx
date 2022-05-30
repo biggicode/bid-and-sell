@@ -26,7 +26,6 @@ const Auctions = () => {
       querySnapshot.forEach((document) => {
         //added
         let now = new Date();
-        console.log("code executed");
         if (Number(document.data().dueDate) < now.getTime()) {
           moveDocument(document.id, document.data());
         }
@@ -35,7 +34,6 @@ const Auctions = () => {
       });
 
       setAuctionsList(list);
-      console.log(list);
     });
   }, []);
 

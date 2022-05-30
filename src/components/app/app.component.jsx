@@ -32,6 +32,8 @@ const App = () => {
     });
   }, [dispatch]);
 
+  //to do look at set interval and timeout
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

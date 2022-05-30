@@ -30,8 +30,6 @@ const WonAuctions = () => {
     });
   }, [currentUser]);
 
-  console.log(wonAuctions);
-
   return (
     <>
       {wonAuctions.map((auction) => (

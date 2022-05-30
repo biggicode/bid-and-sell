@@ -43,9 +43,6 @@ const MyAuctions = () => {
     });
   }, [currentUser]);
 
-  console.log("live auctions:", liveAuctions);
-  console.log("finsihed auctions:", finishedAuctions);
-
   return (
     <>
       {liveAuctions.map((auction) => (
