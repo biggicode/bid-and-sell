@@ -113,3 +113,10 @@ export const Button = styled.button`
     width: 50%;
   }
 `;
+
+export const Error = styled.p`
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px #555;
+  color: red;
+`;

@@ -20,10 +20,12 @@ const initialValues = {
 
 //TO DO: go to read and write settings and allow only register users in firebase (if true)
 //TO DO: text overflow la titlul licitatiei,descriere samd
+//to do: remove console logs
 
 const Sell = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
   const [state, setState] = useState(initialValues);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [imageUpload, setImageUpload] = useState(null);
 
   const navigate = useNavigate();
@@ -63,7 +65,16 @@ const Sell = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!imgTypes.includes(imageUpload.type)) return;
+    if (auctionTitle.length > 40) {
+      setErrorMessage("Titlul nu trebuie sa depaseasca 30 de caractere.");
+      return;
+    }
+    if (!imgTypes.includes(imageUpload.type)) {
+      setErrorMessage(
+        "Formatele suportate pentru fotografii sunt: jpg, jpeg si png!"
+      );
+      return;
+    }
     //TO DO : add custom errors with state
     let currentDate = new Date();
     let dueDate = currentDate.setHours(
@@ -101,6 +112,7 @@ const Sell = () => {
             id="auctionTitle"
             value={auctionTitle}
             onChange={handleInputChange}
+            maxLength="40"
             required
           />
           <S.Label>Fotografie</S.Label>
@@ -182,6 +194,7 @@ const Sell = () => {
             required
           />
         </S.FormSection>
+        {errorMessage && <S.Error>{errorMessage}</S.Error>}
         <S.FormSection>
           <S.Button type="submit">Creati licitatia!</S.Button>
         </S.FormSection>

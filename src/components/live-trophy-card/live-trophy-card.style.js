@@ -58,6 +58,7 @@ export const CardHeader = styled.div`
   p {
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
   }
 `;
 
