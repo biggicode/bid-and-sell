@@ -5,6 +5,8 @@ export const AuctionTitle = styled.h2`
   grid-column: 1/-1;
   font-size: 3rem;
   text-shadow: 3px 6px #000;
+  overflow: hidden;
+  text-overflow: hidden;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-column: span 8;

@@ -6,6 +6,7 @@ export const Card = styled.div`
   border-radius: 0.75rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
   grid-column: span 4;
+  background-color: ${({ theme }) => theme.colors.primaryDarker};
 `;
 
 export const CardHeader = styled.div`
@@ -46,6 +47,7 @@ export const Price = styled.div`
   width: 130px;
   text-align: center;
   padding: 0.75rem 0;
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const ButtonSection = styled.div`
@@ -54,11 +56,13 @@ export const ButtonSection = styled.div`
 `;
 
 export const AuctionTitle = styled.p`
+  background-color: ${({ theme }) => theme.colors.primary};
   border: 3px solid #2f2f3c;
-  margin: 0 auto;
   padding: 0.75rem 1rem;
   text-align: center;
   border-radius: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Link = styled(RouterLink)`

@@ -9,14 +9,11 @@ import {
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
 import { GetAuctionTime } from "../../utils/auction-time";
-//TO DO: validate image type
-//TO DO: go into firebase console and update read/write
 
 const Auction = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);
@@ -34,7 +31,10 @@ const Auction = () => {
     onSnapshot(auctionRef, (document) => {
       let fetchedDoc = document.data();
 
-      console.log("Document fetched");
+      if (!fetchedDoc) navigate("/");
+
+      console.log("Document fetched", fetchedDoc);
+      console.log("auctionRef", auctionRef);
       setAuction(fetchedDoc);
       // setBidAmount()
     });
@@ -100,7 +100,7 @@ const Auction = () => {
   return (
     <>
       <S.AuctionTitle>{auction?.auctionTitle}</S.AuctionTitle>
-      <S.Img src={imageUrl} />
+      <S.Img src={imageUrl} alt="auction image with the object" />
       <S.RightSection>
         <S.GreySection>
           Timp ramas:{" "}

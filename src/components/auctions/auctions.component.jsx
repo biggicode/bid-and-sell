@@ -13,8 +13,6 @@ import Grid from "../grid-system/grid";
 import AuctionCard from "../auction-card";
 import * as S from "./auctions.style";
 
-//TO DO: display a message when is no auctions
-
 const Auctions = () => {
   const [auctionsList, setAuctionsList] = useState([]);
   const moveDocument = async (id, auction) => {
@@ -41,7 +39,7 @@ const Auctions = () => {
     });
   }, []);
 
-  //TO DO: protect auction id with usefull 1:42
+  //to do: update clockdown to 1 sec
   return auctionsList.length === 0 ? (
     <S.Container>
       <S.ContainerTitle>

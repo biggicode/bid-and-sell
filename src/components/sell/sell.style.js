@@ -55,7 +55,9 @@ export const FileLabel = styled.label`
 `;
 
 export const InputFile = styled.input`
-  display: none;
+  /* display: none; */
+  width: 1px;
+  height: 1px;
 `;
 
 export const FileText = styled.p``;
@@ -110,4 +112,11 @@ export const Button = styled.button`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 50%;
   }
+`;
+
+export const Error = styled.p`
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px #555;
+  color: red;
 `;

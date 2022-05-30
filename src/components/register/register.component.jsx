@@ -14,7 +14,7 @@ const Register = () => {
     password: "",
     passwordConfirm: "",
   });
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, error } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
 
@@ -86,6 +86,12 @@ const Register = () => {
           value={passwordConfirm}
           required
         />
+        {error?.includes("email-already-in-use") && (
+          <S.Error>Emailul este folosit deja pentru un alt cont.</S.Error>
+        )}
+        {error?.includes("weak-password") && (
+          <S.Error>Parola trebuie sa contina minim 6 caractere.</S.Error>
+        )}
         <S.Submit type="submit">Inregistrare!</S.Submit>
         <S.CenteredP>
           Ai deja un cont?
