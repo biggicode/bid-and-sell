@@ -16,7 +16,6 @@ import { db, storage } from "../../config/firebase";
 import * as S from "./auction.style";
 import { GetAuctionTime } from "../../utils/auction-time";
 //TO DO: validate image type
-//TO DO: go into firebase console and update read/write
 
 const Auction = () => {
   const currentUser = useSelector(({ user }) => user.currentUser);

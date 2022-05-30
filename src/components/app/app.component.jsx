@@ -32,8 +32,6 @@ const App = () => {
     });
   }, [dispatch]);
 
-  //To do: error handling
-
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

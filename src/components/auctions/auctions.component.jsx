@@ -13,8 +13,6 @@ import Grid from "../grid-system/grid";
 import AuctionCard from "../auction-card";
 import * as S from "./auctions.style";
 
-//TO DO: display a message when is no auctions
-
 const Auctions = () => {
   const [auctionsList, setAuctionsList] = useState([]);
   const moveDocument = async (id, auction) => {

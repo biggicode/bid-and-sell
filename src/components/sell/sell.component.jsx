@@ -19,7 +19,6 @@ const initialValues = {
 };
 
 //TO DO: go to read and write settings and allow only register users in firebase (if true)
-//TO DO: adauga iconita corecta la input file
 //TO DO: text overflow la titlul licitatiei,descriere samd
 
 const Sell = () => {
