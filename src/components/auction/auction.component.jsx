@@ -9,7 +9,6 @@ import {
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { db, storage } from "../../config/firebase";
@@ -99,7 +98,7 @@ const Auction = () => {
   return (
     <>
       <S.AuctionTitle>{auction?.auctionTitle}</S.AuctionTitle>
-      <S.Img src={imageUrl} />
+      <S.Img src={imageUrl} alt="auction image with the object" />
       <S.RightSection>
         <S.GreySection>
           Timp ramas:{" "}
