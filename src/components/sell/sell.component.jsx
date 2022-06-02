@@ -141,7 +141,7 @@ const Sell = () => {
             onChange={handleInputChange}
             required
           ></S.TextArea>
-          <S.Label htmlFor="startingPrice">Pret de pornire</S.Label>
+          <S.Label htmlFor="startingPrice">Pret de pornire(in LEI)</S.Label>
           <S.Input
             type="number"
             name="startingPrice"
