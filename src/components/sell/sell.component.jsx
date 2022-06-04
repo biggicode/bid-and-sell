@@ -66,7 +66,7 @@ const Sell = () => {
     e.preventDefault();
 
     if (auctionTitle.length > 40) {
-      setErrorMessage("Titlul nu trebuie sa depaseasca 30 de caractere.");
+      setErrorMessage("Titlul nu trebuie sa depaseasca 40 de caractere.");
       return;
     }
     if (!imgTypes.includes(imageUpload.type)) {
