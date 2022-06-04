@@ -75,3 +75,7 @@ export const Circle = styled.div`
   align-items: center;
   font-size: 3rem;
 `;
+
+export const StepLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.linearStart};
+`;
