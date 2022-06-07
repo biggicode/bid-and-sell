@@ -51,7 +51,7 @@ const LiveTrophyCard = ({
         <S.BodyTitle>
           {type === "live" ? "Oferta curenta" : "Oferta castigatoare"}
         </S.BodyTitle>
-        <p>{currentPrice}</p>
+        <p>{currentPrice} LEI</p>
       </S.CardBody>
       <S.CardFooter>
         {type === "live" || (
