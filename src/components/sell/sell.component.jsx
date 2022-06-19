@@ -66,7 +66,7 @@ const Sell = () => {
     e.preventDefault();
 
     if (auctionTitle.length > 40) {
-      setErrorMessage("Titlul nu trebuie sa depaseasca 30 de caractere.");
+      setErrorMessage("Titlul nu trebuie sa depaseasca 40 de caractere.");
       return;
     }
     if (!imgTypes.includes(imageUpload.type)) {
@@ -141,7 +141,7 @@ const Sell = () => {
             onChange={handleInputChange}
             required
           ></S.TextArea>
-          <S.Label htmlFor="startingPrice">Pret de pornire</S.Label>
+          <S.Label htmlFor="startingPrice">Pret de pornire(in LEI)</S.Label>
           <S.Input
             type="number"
             name="startingPrice"

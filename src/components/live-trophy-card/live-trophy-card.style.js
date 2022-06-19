@@ -36,7 +36,6 @@ export const IconBadge = styled.div`
     position: absolute;
     top: 0;
     right: -9px;
-    /* z-index: 2; */
   }
 `;
 

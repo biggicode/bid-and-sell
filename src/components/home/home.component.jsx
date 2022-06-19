@@ -16,29 +16,42 @@ const Home = () => {
         <S.Step>
           <S.Circle>1</S.Circle>
           <S.StepText>
-            Este necesar se detineti un cont pentru a participa la o licitatie
-            implicit pentru a crea una. Inregistreaza-te accesand butonul de
-            Inregistrare! Daca ai deja un cont existent apasa butonul de
-            Autentificare. Aceste butoane le gasiti in partea dreapta sus a
-            paginii.
+            <p>
+              Este necesar se detineti un cont pentru a participa la o licitatie
+              implicit pentru a crea una. Inregistreaza-te accesand butonul de
+              <S.StepLink to="/register"> Inregistrare</S.StepLink>! Daca ai
+              deja un cont existent apasa butonul de{" "}
+              <S.StepLink to="/login">Autentificare</S.StepLink>. Aceste butoane
+              le gasiti in partea dreapta sus a paginii.
+            </p>
           </S.StepText>
         </S.Step>
         <S.Step>
           <S.StepText alignRight={true}>
-            Creeaza o licitatie accesand pagina Vinde din bara de navigatie sau
-            participa la o licitatie aflata in desfasurare. Pentru a vedea
-            licitatiile aflate in desfasurare accesati pagina Licitatii.
+            <p>
+              Creeaza o licitatie accesand pagina{" "}
+              <S.StepLink to="/sell">Vinde</S.StepLink> din bara de navigatie
+              sau participa la o licitatie aflata in desfasurare. Pentru a vedea
+              licitatiile aflate in desfasurare accesati pagina{" "}
+              <S.StepLink to="/auctions">Licitatii</S.StepLink>.
+            </p>
           </S.StepText>
           <S.Circle>2</S.Circle>
         </S.Step>
         <S.Step>
           <S.Circle>3</S.Circle>
           <S.StepText>
-            Licitatiile create de catre tine le poti gasi apasand pe linkul
-            "Licitatile mele". Acolo poti contacta castigatorul prin intermediul
-            adresei de email. Daca ati participat la o licitatie si sunteti
-            castigator puteti contacta proprietarul accesand sectiunea
-            "Licitatii castigate" unde veti gasi emailul acestuia.
+            <p>
+              Licitatiile create de catre tine le poti gasi apasand pe linkul
+              <S.StepLink to="/licitatilemele"> Licitatile mele</S.StepLink>.
+              Acolo poti contacta castigatorul prin intermediul adresei de
+              email. Daca ati participat la o licitatie si sunteti castigator
+              puteti contacta proprietarul accesand sectiunea{" "}
+              <S.StepLink to="/licitatiicastigate">
+                Licitatii castigate
+              </S.StepLink>{" "}
+              unde veti gasi emailul acestuia.
+            </p>
           </S.StepText>
         </S.Step>
       </S.StepsContainer>

@@ -24,12 +24,12 @@ const Auctions = () => {
     onSnapshot(collection(db, "auctions"), (querySnapshot) => {
       const list = [];
       querySnapshot.forEach((document) => {
-        //added
         let now = new Date();
+
         if (Number(document.data().dueDate) < now.getTime()) {
           moveDocument(document.id, document.data());
         }
-        //added
+
         list.push({ id: document.id, ...document.data() });
       });
 
