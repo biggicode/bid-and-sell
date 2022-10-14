@@ -30,7 +30,7 @@ const AuctionCard = ({
   useEffect(() => {
     setTimeout(() => {
       setRemainingTime(GetAuctionTime(dueDate));
-    }, 1000 * 5);
+    }, 1000 * 3);
   });
 
   return (
