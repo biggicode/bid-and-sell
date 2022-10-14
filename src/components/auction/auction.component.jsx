@@ -101,7 +101,9 @@ const Auction = () => {
         <S.GreySection>
           Timp ramas:{" "}
           <span>
-            {remainingTime.hours} ore {remainingTime.minutes}minute
+            {remainingTime === "expired"
+              ? "Licitatia a expirat."
+              : `${remainingTime.hours} ore ${remainingTime.minutes} minute`}
           </span>
         </S.GreySection>
         <S.GreySection>
