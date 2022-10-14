@@ -36,7 +36,9 @@ const AuctionCard = ({
   return (
     <S.Card>
       <S.CardHeader>
-        {remainingTime.hours}:{remainingTime.minutes}
+        {remainingTime === "expired"
+          ? "Expired"
+          : `${remainingTime.hours}:${remainingTime.minutes}`}
       </S.CardHeader>
       <S.CardBody>
         <S.CardImg src={imgUrl} />
