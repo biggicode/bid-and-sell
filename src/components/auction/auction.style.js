@@ -127,7 +127,7 @@ export const RightSection = styled.div`
   gap: 20px;
   grid-column: 1/-1;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: 9 / span 4;
     grid-row: 1 / span 2;
   }
